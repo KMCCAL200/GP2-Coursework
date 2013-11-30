@@ -11,13 +11,23 @@ class CameraComponent:public GameComponent
 public:
 	CameraComponent()
 	{
+		m_Name="Camera";
+		//took these values from Brian
+		m_LookAt=XMFLOAT3(0.0f,0.0f,0.0f);
+		m_Up=XMFLOAT3(0.0f,1.0f,0.0f);
+		m_View=XMMatrixIdentity();
+		m_Projection=XMMatrixIdentity();
+		m_FOV=XM_PI/4;
+		m_AspectRatio=800.0f/640.0f;
+		m_Near=0.1f;
+		m_Far=1000.0f;
 	};
 
 	~CameraComponent()
 	{
 	}
 
-	private:
+private:
 	XMFLOAT3 m_LookAt;
 	XMFLOAT3 m_Up;
 	float m_FOV;
@@ -29,7 +39,7 @@ public:
 	XMMATRIX m_Projection;
 
 public:
-//Set Functions
+	//Set Functions
 	void setLook(float x, float y, float z)
 	{
 		m_LookAt = XMFLOAT3(x,y,z);
@@ -59,7 +69,7 @@ public:
 	{
 		m_Far = farClip;
 	};
-	
+
 	//Get Functions
 	float getFOV()
 	{
@@ -80,7 +90,7 @@ public:
 	{
 		return m_Far;
 	};
-	
+
 	XMFLOAT3& getLook()
 	{
 		return m_LookAt;

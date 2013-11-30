@@ -36,6 +36,17 @@ public:
 	ID3D10Buffer * createIndexBuffer(int size,int *pIndices);
 	ID3D10InputLayout * createVertexLayout(ID3D10Effect * pEffect);
 
+
+	void setView(XMMATRIX& view)
+	{
+		m_View = view;
+	};
+	void setProjection(XMMATRIX& projection)
+	{
+		m_Projection = projection;
+	};
+	
+
 	void addToRenderQueue(GameObject *pObject);
 private:
 	bool createDevice(HWND pWindowHandle,int windowWidth, int windowHeight,
@@ -57,4 +68,7 @@ private:
 	ID3D10EffectTechnique * m_pDefaultTechnique;
 
 	RenderQueue m_RenderQueue;
+	
+	XMMATRIX m_View;
+	XMMATRIX m_Projection;
 };

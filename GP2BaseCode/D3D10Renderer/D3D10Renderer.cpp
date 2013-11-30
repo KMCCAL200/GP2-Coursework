@@ -335,7 +335,6 @@ void D3D10Renderer::present()
     m_pSwapChain->Present( 0, 0 );
 }
 
-
 ID3D10Effect * D3D10Renderer::loadEffectFromMemory(const char *pMem)
 {
 	ID3D10Effect *pEffect=NULL;
@@ -488,7 +487,6 @@ ID3D10InputLayout * D3D10Renderer::createVertexLayout(ID3D10Effect * pEffect)
 
 	return pVertexLayout;
 }
-
 
 void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 {

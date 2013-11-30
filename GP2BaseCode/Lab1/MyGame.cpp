@@ -19,5 +19,20 @@ bool MyGame::initGame()
 
 	m_GameObjectList.push_back(pTestObj);
 
+
+
+
+	CameraComponent *pCamera = new CameraComponent();
+
+	pCamera->setLook(0.0f,0.0f,0.0f);
+        pCamera->setFOV(m_GameOptionDesc.width/m_GameOptionDesc.height);
+
+	GameObject *pTestCamera=new GameObject();
+	pTestCamera->setName("MainCamera");
+	pTestCamera->addComponent(pCamera);
+	setMainCamera(pCamera);
+	
+	m_GameObjectList.push_back(pTestCamera);
+
 	return true;
 }

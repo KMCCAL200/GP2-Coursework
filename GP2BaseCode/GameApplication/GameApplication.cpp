@@ -27,6 +27,7 @@ CGameApplication::CGameApplication(void)
 	m_GameOptionDesc.fullscreen=false;
 	//Config options
 	m_ConfigFileName=TEXT("game.cfg");
+	m_pMainCamera=NULL;
 }
 
 //Desconstructor
@@ -102,8 +103,6 @@ bool CGameApplication::initWindow()
 	return true;
 }
 
-
-
 //called to init the game
 bool CGameApplication::initGame()
 {
@@ -126,9 +125,16 @@ void CGameApplication::run()
 	}
 }
 
+
 //Render, called to draw one frame of the game
 void CGameApplication::render()
 {
+	if (m_pMainCamera)
+	{
+		D3D10Renderer * pD3D10Renderer=static_cast<D3D10Renderer*>(m_pRenderer);
+		pD3D10Renderer->setProjection(m_pMainCamera->getProjection());
+		pD3D10Renderer->setView(m_pMainCamera->getView());
+	}
 	for(GameObjectIter iter=m_GameObjectList.begin();iter!=m_GameObjectList.end();++iter)
 	{
 		m_pRenderer->addToRenderQueue((*iter));
@@ -137,32 +143,32 @@ void CGameApplication::render()
 	m_pRenderer->clear(1.0f,0.0f,0.0f,1.0f);
 	m_pRenderer->render();
 	m_pRenderer->present();
-}
-
-//Update, called to update the game
-void CGameApplication::update()
-{
-	for(GameObjectIter iter=m_GameObjectList.begin();iter!=m_GameObjectList.end();iter++)
-	{
-		(*iter)->update();
 	}
-}
 
-void CGameApplication::clearObjectList()
-{
-	//m_GameObjectList
-	GameObjectIter iter=m_GameObjectList.begin();
-	while(iter!=m_GameObjectList.end())
+	//Update, called to update the game
+	void CGameApplication::update()
 	{
-		if (*iter)
+		for(GameObjectIter iter=m_GameObjectList.begin();iter!=m_GameObjectList.end();iter++)
 		{
-			delete (*iter);
-			iter=m_GameObjectList.erase(iter);
-		}
-		else
-		{
-			++iter;
+			(*iter)->update();
 		}
 	}
-}
+
+	void CGameApplication::clearObjectList()
+	{
+		//m_GameObjectList
+		GameObjectIter iter=m_GameObjectList.begin();
+		while(iter!=m_GameObjectList.end())
+		{
+			if (*iter)
+			{
+				delete (*iter);
+				iter=m_GameObjectList.erase(iter);
+			}
+			else
+			{
+				++iter;
+			}
+		}
+	}
 

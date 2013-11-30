@@ -43,6 +43,13 @@ public:
 	virtual bool initGame();
 
 	void clearObjectList();
+
+	//pointer to main camera
+	void setMainCamera(CameraComponent * pMainCamera)
+	{
+		m_pMainCamera = pMainCamera;
+	};
+
 private:
 	bool parseConfigFile();
 	bool initInput();
@@ -59,6 +66,8 @@ protected:
 	GameOptionsDesc m_GameOptionDesc;
 	wstring m_ConfigFileName;
 	GameObjectList m_GameObjectList;
+
+	CameraComponent * m_pMainCamera;
 
 	
 };
