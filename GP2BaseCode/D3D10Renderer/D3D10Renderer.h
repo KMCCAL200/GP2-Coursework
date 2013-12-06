@@ -36,11 +36,6 @@ public:
 	ID3D10Buffer * createIndexBuffer(int size,int *pIndices);
 	ID3D10InputLayout * createVertexLayout(ID3D10Effect * pEffect);
 
-<<<<<<< HEAD
-//test
-=======
->>>>>>> Merge updated
-
 	void setView(XMMATRIX& view)
 	{
 		m_View = view;
