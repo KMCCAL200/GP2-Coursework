@@ -2,24 +2,49 @@
 
 bool MyGame::initGame()
 {
-	CubeVisualComponent *pCube=new CubeVisualComponent();
+	//CubeVisualComponent *pCube=new CubeVisualComponent();
+	//pCube->create(m_pRenderer);
+	//
+	//Material *pMaterial=new Material();
+	//pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+	//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+	//DirectionLightComponent *pDirLight = new  DirectionLightComponent();
+
+	//GameObject *pTestObj=new GameObject();
+	//pTestObj->setName("TestObject");
+	//pTestObj->addComponent(pCube);
+	//pTestObj->addComponent(pMaterial);
+	//pTestObj->addComponent(pDirLight);
+	//pCube->createVertexLayout(m_pRenderer);
+	//
+	//pTestObj->getTransform().setPosition(-0.5f,0.0f,1.0f);
+
+	//m_GameObjectList.push_back(pTestObj);
+
+
+
+
+
+	
+	MeshComponent *pCube=new MeshComponent();
 	pCube->create(m_pRenderer);
 	
 	Material *pMaterial=new Material();
+	//pMaterial->loadEffect("Effects/Transform.fx",m_pRenderer);
+	pMaterial->loadDiffuseTexture("Models/shield3.bmp",m_pRenderer);
 	pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
-	pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
-	DirectionLightComponent *pDirLight = new  DirectionLightComponent();
-
 	GameObject *pTestObj=new GameObject();
 	pTestObj->setName("TestObject");
 	pTestObj->addComponent(pCube);
 	pTestObj->addComponent(pMaterial);
-	pTestObj->addComponent(pDirLight);
+
 	pCube->createVertexLayout(m_pRenderer);
 	
-	pTestObj->getTransform().setPosition(-0.5f,0.0f,1.0f);
+	pTestObj->getTransform().setPosition(0.5f,1.0f,1.0f);
 
 	m_GameObjectList.push_back(pTestObj);
+
+
 
 
 	//CAMERA
@@ -31,7 +56,7 @@ bool MyGame::initGame()
         pCameraGO->setName("MainCamera");
         pCameraGO->addComponent(pCameraComp);
         setMainCamera(pCameraComp);
-        pCameraGO->getTransform().setPosition(-10.0f,-10.0f,-10.0f);
+        pCameraGO->getTransform().setPosition(-100.0f,140.0f,40.0f);
 
         m_GameObjectList.push_back(pCameraGO);
 	
