@@ -243,8 +243,6 @@ void D3D10Renderer::render(GameObject *pObject)
 	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
 
 
-
-
 		int noIndices=0;
 		int noVerts=0;
 		ID3D10Buffer *pIndexBuffer=NULL;
@@ -254,8 +252,7 @@ void D3D10Renderer::render(GameObject *pObject)
 		ID3D10InputLayout *pCurrentLayout=m_pDefaultVertexLayout;
 
 		//GameObject * pObject=m_RenderQueue.front();
-		if(pObject)
-		{
+		
 			//Grab Transform
 			Transform transform=pObject->getTransform();
 
@@ -334,13 +331,50 @@ void D3D10Renderer::render(GameObject *pObject)
 					ID3D10EffectShaderResourceVariable * pSpecularTextureVar=pCurrentEffect->GetVariableByName("specularTexture")->AsShaderResource();
 					pSpecularTextureVar->SetResource(pMaterial->getSpecularTexture());
 				}
+
+				//ID3D10EffectVectorVariable *pAmbientMatVar=pCurrentEffect->GetVariableByName("ambientMaterial")->AsVector();
+			//ID3D10EffectVectorVariable *pDiffuseMatVar=pCurrentEffect->GetVariableByName("diffuseMaterial")->AsVector();
+			/*ID3D10EffectVectorVariable *pSpecularMatVar=pCurrentEffect->GetVariableByName("specularMaterial")->AsVector();
+
+			if (pAmbientMatVar)
+			{
+				pAmbientMatVar->SetFloatVector((float*)&pMaterial->getAmbient());
 			}
+			if (pDiffuseMatVar)
+			{
+				pDiffuseMatVar->SetFloatVector((float*)&pMaterial->getDiffuse());
+			}
+			if (pSpecularMatVar)
+			{
+				pSpecularMatVar->SetFloatVector((float*)&pMaterial->getSpecular());
+			}
+			}*/
 
 			ID3D10EffectMatrixVariable * pWorldMatrixVar=pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();
 			ID3D10EffectMatrixVariable * pViewMatrixVar=pCurrentEffect->GetVariableByName("matView")->AsMatrix();
 			ID3D10EffectMatrixVariable * pProjectionMatrixVar=pCurrentEffect->GetVariableByName("matProjection")->AsMatrix();
-
+			//ID3D10EffectVectorVariable *pAmbientLightColourVar=pCurrentEffect->GetVariableByName("ambientLightColour")->AsVector();
 			
+			/*if (m_pMainLight)
+		{
+			DirectionLightComponent*pDirectionLightComponent=static_cast<DirectionLightComponent*>(m_pMainLight->getComponent("DirectionalLight"));
+			if (pDirectionLightComponent){
+				//ID3D10EffectVectorVariable *pDiffuseLightVar=pCurrentEffect->GetVariableByName("diffuseLightColour")->AsVector();
+				//ID3D10EffectVectorVariable *pSpecularLightVar=pCurrentEffect->GetVariableByName("specularLightColour")->AsVector();
+				ID3D10EffectVectorVariable *pLightDirVar=pCurrentEffect->GetVariableByName("lightDirection")->AsVector();
+
+				//pDiffuseLightVar->SetFloatVector((float*)&pDirectionLightComponent->getDiffuse());
+				//pSpecularLightVar->SetFloatVector((float*)&pDirectionLightComponent->getSpecular());
+				pLightDirVar->SetFloatVector((float*)&pDirectionLightComponent->getDirection());
+			}
+		}*/
+			/*	if (m_pMainCamera)
+		{
+			Transform t=m_pMainCamera->getTransform();
+			ID3D10EffectVectorVariable *pCameraVar=pCurrentEffect->GetVariableByName("cameraPosition")->AsVector();
+			pCameraVar->SetFloatVector((float*)&t.getPosition());
+		}*/
+
 			if (pWorldMatrixVar)
 			{
 				pWorldMatrixVar->SetMatrix((float*)&transform.getWorld());
@@ -370,9 +404,9 @@ void D3D10Renderer::render(GameObject *pObject)
 				else if (pVertexBuffer)
 					m_pD3D10Device->Draw(noVerts,0);
 			}
-	}
+	
 }
-
+			}
 void D3D10Renderer::present()
 {
 	//Swaps the buffers in the chain, the back buffer to the front(screen)
@@ -535,6 +569,18 @@ ID3D10InputLayout * D3D10Renderer::createVertexLayout(ID3D10Effect * pEffect)
 
 void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 {
+	/*DirectionLightComponent *pLight=static_cast<DirectionLightComponent*>(pObject->getComponent("DirectionalLight"));
+	if (pLight)
+	{
+		m_pMainLight=pObject;
+	}
+	CameraComponent *pCamera=static_cast<CameraComponent*>(pObject->getComponent("Camera"));
+	if (pCamera)
+	{
+		m_pMainCamera=pObject;
+	}
+	*/
+	
 	m_RenderQueue.push(pObject);
 }
 
