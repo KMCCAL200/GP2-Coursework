@@ -37,7 +37,7 @@ bool MyGame::initGame()
 
         m_GameObjectList.push_back(pCameraGO);
 		Material *pMaterial=new Material();
-		DirectionLightComponent *pDirLight = new  DirectionLightComponent();
+		
 	
 		//==============================Model
 		GameObject *pAxe=m_ModelLoader.loadModelFromFile("Models/2h_axe.fbx",m_pRenderer);
@@ -48,7 +48,6 @@ bool MyGame::initGame()
                 pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
                 pMaterial->loadDiffuseTexture("Textures/2h_axe.BMP",m_pRenderer);
                 iter->second->addComponent(pMaterial);
-				pAxe->addComponent(pDirLight);
                 VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
                 pVisual->createVertexLayout(m_pRenderer);
         }

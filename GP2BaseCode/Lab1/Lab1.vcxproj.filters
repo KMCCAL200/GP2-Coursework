@@ -33,9 +33,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="game.cfg" />
-    <None Include="Effects\Texture.fx">
-      <Filter>Effects</Filter>
-    </None>
     <None Include="Effects\Transform.fx">
       <Filter>Effects</Filter>
     </None>
@@ -50,6 +47,9 @@
     </None>
     <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\2h_axe.bmp">
       <Filter>Textures</Filter>
+    </None>
+    <None Include="Effects\Texture.fx">
+      <Filter>Effects</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
