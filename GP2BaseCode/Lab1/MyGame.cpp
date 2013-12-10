@@ -2,7 +2,7 @@
 
 bool MyGame::initGame()
 {
-	CubeVisualComponent *pCube=new CubeVisualComponent();
+	/*CubeVisualComponent *pCube=new CubeVisualComponent();
 	pCube->create(m_pRenderer);
 	
 	Material *pMaterial=new Material();
@@ -21,7 +21,7 @@ bool MyGame::initGame()
 	
 	pTestObj->getTransform().setPosition(-0.5f,0.0f,1.0f);
 
-	m_GameObjectList.push_back(pTestObj);
+	m_GameObjectList.push_back(pTestObj);*/
 
 
 	//CAMERA
@@ -33,24 +33,30 @@ bool MyGame::initGame()
         pCameraGO->setName("MainCamera");
         pCameraGO->addComponent(pCameraComp);
         setMainCamera(pCameraComp);
-        pCameraGO->getTransform().setPosition(0.5f,0.0f,-2.0f);
+        pCameraGO->getTransform().setPosition(100.5f,200.0f,-200.0f);
 
         m_GameObjectList.push_back(pCameraGO);
+		Material *pMaterial=new Material();
+		DirectionLightComponent *pDirLight = new  DirectionLightComponent();
 	
 		//==============================Model
-		GameObject *pAxe=m_ModelLoader.loadModelFromFile("Models/1h_axe.fbx",m_pRenderer);
+		GameObject *pAxe=m_ModelLoader.loadModelFromFile("Models/2h_axe.fbx",m_pRenderer);
 		
         for(GameObject::ChildrenGameObjectsIter iter=pAxe->getFirstChild();iter!=pAxe->getLastChild();iter++)
         {
                 pMaterial=new Material();
                 pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
-                pMaterial->loadDiffuseTexture("Textures/1h_axe.BMP",m_pRenderer);
+                pMaterial->loadDiffuseTexture("Textures/2h_axe.BMP",m_pRenderer);
                 iter->second->addComponent(pMaterial);
+				pAxe->addComponent(pDirLight);
                 VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
                 pVisual->createVertexLayout(m_pRenderer);
         }
 
         m_GameObjectList.push_back(pAxe);
+	
+
+		
 		//===================================
 	return true;
 }

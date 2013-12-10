@@ -100,10 +100,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_C.bmp" />
-    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_D.bmp" />
-    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_N.bmp" />
-    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_O.bmp" />
+    <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\1h_axe.bmp" />
+    <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\1h_axe.fbx" />
+    <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\2h_axe.bmp" />
+    <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\2h_axe.fbx" />
     <None Include="Effects\Texture.fx" />
     <None Include="Effects\Transform.fx" />
     <None Include="game.cfg" />

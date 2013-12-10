@@ -16,8 +16,11 @@
     <Filter Include="Effects">
       <UniqueIdentifier>{ce937571-0e50-4afb-8b7b-a92c1bf72cc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{0117227c-1557-47d6-ad32-7f8d533747cb}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Textures">
-      <UniqueIdentifier>{1ebc0581-0a04-4e4e-a37a-de26fe4501b6}</UniqueIdentifier>
+      <UniqueIdentifier>{5bdd6d78-663f-4240-839b-5865a3d7a7a8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -36,16 +39,16 @@
     <None Include="Effects\Transform.fx">
       <Filter>Effects</Filter>
     </None>
-    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_C.bmp">
+    <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\1h_axe.fbx">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\1h_axe.bmp">
       <Filter>Textures</Filter>
     </None>
-    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_D.bmp">
-      <Filter>Textures</Filter>
+    <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\2h_axe.fbx">
+      <Filter>Models</Filter>
     </None>
-    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_N.bmp">
-      <Filter>Textures</Filter>
-    </None>
-    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_O.bmp">
+    <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\2h_axe.bmp">
       <Filter>Textures</Filter>
     </None>
   </ItemGroup>
