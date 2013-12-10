@@ -12,6 +12,7 @@
 #define _XM_NO_INTRINSICS_
 #include <xnamath.h>
 #include <queue>
+#include <vector>
 
 #include "Vertex.h"
 
@@ -36,6 +37,7 @@ public:
 	ID3D10Buffer * createIndexBuffer(int size,int *pIndices);
 	ID3D10InputLayout * createVertexLayout(ID3D10Effect * pEffect);
 
+
 	void setView(XMMATRIX& view)
 	{
 		m_View = view;
@@ -44,6 +46,12 @@ public:
 	{
 		m_Projection = projection;
 	};
+
+void setAmbientLightColour(float r, float g, float b, float a)
+{
+
+	m_AmbientLightColour =XMCOLOR(r,g,b,a);
+}
 	
 	ID3D10ShaderResourceView * loadTexture(const char *pFileName);
 
@@ -52,6 +60,8 @@ private:
 	bool createDevice(HWND pWindowHandle,int windowWidth, int windowHeight,
 bool fullScreen);
 	bool createInitialRenderTarget(int windowWidth, int windowHeight);
+
+void render(GameObject *pCurrentObject);
 private:
 	typedef std::queue<GameObject*> RenderQueue;
 	//D3D10 stuff
@@ -71,4 +81,6 @@ private:
 	
 	XMMATRIX m_View;
 	XMMATRIX m_Projection;
+	 GameObject * m_pMainCamera;
+        GameObject * m_pMainLight;
 };

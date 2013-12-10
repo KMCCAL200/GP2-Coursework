@@ -37,5 +37,20 @@ bool MyGame::initGame()
 
         m_GameObjectList.push_back(pCameraGO);
 	
+		//==============================Model
+		GameObject *pAxe=m_ModelLoader.loadModelFromFile("Models/1h_axe.fbx",m_pRenderer);
+		
+        for(GameObject::ChildrenGameObjectsIter iter=pAxe->getFirstChild();iter!=pAxe->getLastChild();iter++)
+        {
+                pMaterial=new Material();
+                pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+                pMaterial->loadDiffuseTexture("Textures/1h_axe.BMP",m_pRenderer);
+                iter->second->addComponent(pMaterial);
+                VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
+                pVisual->createVertexLayout(m_pRenderer);
+        }
+
+        m_GameObjectList.push_back(pAxe);
+		//===================================
 	return true;
 }

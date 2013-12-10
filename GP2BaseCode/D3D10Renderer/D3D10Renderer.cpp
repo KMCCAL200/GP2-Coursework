@@ -76,6 +76,8 @@ D3D10Renderer::D3D10Renderer()
 	m_pDefaultEffect=NULL;        
 	m_View=XMMatrixIdentity();
 	m_Projection=XMMatrixIdentity();
+	 setAmbientLightColour(0.5f,0.5f,0.5f,1.0f);
+        m_pMainLight=NULL;
 }
 
 D3D10Renderer::~D3D10Renderer()
@@ -234,12 +236,29 @@ void D3D10Renderer::clear(float r,float g,float b,float a)
 }
 
 void D3D10Renderer::render()
+{
+        m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
+        //We should really find all lights first! but instead we are just going to set a 'main' light 
+        while(!m_RenderQueue.empty())
+        {
+                GameObject * pObject=m_RenderQueue.front();
+                for(GameObject::ChildrenGameObjectsIter iter=pObject->getFirstChild();iter!=pObject->getLastChild();iter++)
+                {
+                        GameObject *pCurrentObject=(*iter).second;
+                        render(pCurrentObject);
+                }
+                render(pObject);
+                m_RenderQueue.pop();
+        }
+
+}
+
+void D3D10Renderer::render(GameObject *pObject)
 {	
 
 	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
 
-	while(!m_RenderQueue.empty())
-	{
+
 
 
 		int noIndices=0;
@@ -250,7 +269,7 @@ void D3D10Renderer::render()
 		ID3D10EffectTechnique *pCurrentTechnique=m_pDefaultTechnique;
 		ID3D10InputLayout *pCurrentLayout=m_pDefaultVertexLayout;
 
-		GameObject * pObject=m_RenderQueue.front();
+		//GameObject * pObject=m_RenderQueue.front();
 		if(pObject)
 		{
 			//Grab Transform
@@ -365,6 +384,7 @@ void D3D10Renderer::render()
 			ID3D10EffectMatrixVariable * pViewMatrixVar=pCurrentEffect->GetVariableByName("matView")->AsMatrix();
 			ID3D10EffectMatrixVariable * pProjectionMatrixVar=pCurrentEffect->GetVariableByName("matProjection")->AsMatrix();
 
+			
 			if (pWorldMatrixVar)
 			{
 				pWorldMatrixVar->SetMatrix((float*)&transform.getWorld());
@@ -394,10 +414,6 @@ void D3D10Renderer::render()
 				else if (pVertexBuffer)
 					m_pD3D10Device->Draw(noVerts,0);
 			}
-
-		}
-
-		m_RenderQueue.pop();
 	}
 }
 
