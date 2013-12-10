@@ -2,6 +2,7 @@
 
 #include "GameComponent.h"
 #include "../Renderer/Renderer.h"
+#include "../D3D10Renderer/Vertex.h"
 
 #include <D3D10.h>
 #include <D3DX10.h>
@@ -18,7 +19,7 @@ public:
 		m_iNoVerts=0;
 		m_Name="Visual";
 	};
-	
+
 	virtual ~VisualComponent()
 	{
 		if (m_pVertexBuffer)
@@ -40,13 +41,17 @@ public:
 	};
 
 	bool createVertexLayout(IRenderer * pRenderer);
+	//=======================New
+	bool createVertexBuffer(int size,Vertex *pVerts,IRenderer *pRenderer);
+	bool createIndexBuffer(int size,int *pIndices,IRenderer *pRenderer);
+
 
 	ID3D10Buffer* getVertexBuffer(){return m_pVertexBuffer;};
-	
+
 	ID3D10Buffer* getIndexBuffer(){return m_pIndexBuffer;};
 
 	ID3D10InputLayout* getVertexLayout(){return m_pVertexLayout;};
-	
+
 	int getNoIndices()
 	{
 		return m_iNoIndices;

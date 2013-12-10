@@ -22,3 +22,25 @@ void Material::switchTechnique(const string& name)
 		m_pCurrentTechnique=m_pEffect->GetTechniqueByName(name.c_str());
 	}
 }
+
+bool Material::loadDiffuseTexture(const string& filename, IRenderer * pRenderer)
+{
+	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
+	m_pDiffuseTexture = pD3D10Renderer->loadTexture(filename.c_str());
+	if (!m_pDiffuseTexture)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool Material::loadSpecularTexture(const string& filename, IRenderer * pRenderer)
+{
+	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
+	m_pSpecularTexture = pD3D10Renderer->loadTexture(filename.c_str());
+	if (!m_pSpecularTexture)
+	{
+		return false;
+	}
+	return true;
+}
