@@ -7,8 +7,10 @@ bool MyGame::initGame()
 	
 	Material *pMaterial=new Material();
 	pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+	pMaterial->loadDiffuseTexture("Textures/sword2_C.bmp",m_pRenderer);
 	pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
 	DirectionLightComponent *pDirLight = new  DirectionLightComponent();
+	
 
 	GameObject *pTestObj=new GameObject();
 	pTestObj->setName("TestObject");
@@ -31,7 +33,7 @@ bool MyGame::initGame()
         pCameraGO->setName("MainCamera");
         pCameraGO->addComponent(pCameraComp);
         setMainCamera(pCameraComp);
-        pCameraGO->getTransform().setPosition(-10.0f,-10.0f,-10.0f);
+        pCameraGO->getTransform().setPosition(0.5f,0.0f,-2.0f);
 
         m_GameObjectList.push_back(pCameraGO);
 	

@@ -26,6 +26,8 @@ public:
 		m_Specular=XMCOLOR(1.0f,1.0f,1.0f,1.0f);
 		m_pDiffuseTexture = NULL;
 		m_pSpecularTexture = NULL;
+		m_pBumpTexture = NULL;
+		m_pHeightTexture = NULL;
 	};
 
 	~Material()
@@ -46,6 +48,18 @@ public:
 		{
 			m_pSpecularTexture->Release();
 			m_pSpecularTexture = NULL;
+		}
+
+		if(m_pBumpTexture)
+		{
+			m_pBumpTexture->Release();
+			m_pBumpTexture = NULL;
+		}
+
+		if(m_pHeightTexture)
+		{
+			m_pHeightTexture->Release();
+			m_pHeightTexture = NULL;
 		}
 	};
 
@@ -94,10 +108,22 @@ public:
 
 	bool loadDiffuseTexture(const string& filename, IRenderer * pRenderer);
 	bool loadSpecularTexture( const string& filename, IRenderer * pRenderer);
+	bool loadBumpTexture( const string& filename, IRenderer * pRenderer);
+	bool loadHeightTexture( const string& filename, IRenderer * pRenderer);
 
 	ID3D10ShaderResourceView * getDiffuseTexture()
 	{
 		return m_pDiffuseTexture;
+	}
+
+	ID3D10ShaderResourceView * getBumpTexture()
+	{
+		return m_pBumpTexture;
+	}
+
+	ID3D10ShaderResourceView * getHeightTexture()
+	{
+		return m_pHeightTexture;
 	}
 
 	ID3D10ShaderResourceView * getSpecularTexture()
@@ -112,4 +138,6 @@ private:
 	ID3D10EffectTechnique *m_pCurrentTechnique;
 	ID3D10ShaderResourceView * m_pDiffuseTexture;
 	ID3D10ShaderResourceView * m_pSpecularTexture;
+	ID3D10ShaderResourceView * m_pBumpTexture;
+	ID3D10ShaderResourceView * m_pHeightTexture;
 };

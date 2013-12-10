@@ -28,6 +28,22 @@ const D3D10_INPUT_ELEMENT_DESC VerexLayout[] =
 	20, //Offset, this will increase as we add more elements(such texture coords) to the layout - BMD
 	D3D10_INPUT_PER_VERTEX_DATA, //Input classification - BMD
 	0 }, //Instance Data slot - BMD
+
+	{ "TANGENT", //Name of the semantic, this helps to bind the vertex inside the Vertex Shader - BMD
+	0, //The index of the semantic, see above - BMD
+	DXGI_FORMAT_R32G32B32_FLOAT, //The format of the element, in this case 32 bits of each sub element - BMD
+	0, //Input slot - BMD
+	32, //Offset, this will increase as we add more elements(such texture coords) to the layout - BMD
+	D3D10_INPUT_PER_VERTEX_DATA, //Input classification - BMD
+	0 }, //Instance Data slot - BMD
+
+	{ "BINORMAL", //Name of the semantic, this helps to bind the vertex inside the Vertex Shader - BMD
+	0, //The index of the semantic, see above - BMD
+	DXGI_FORMAT_R32G32B32_FLOAT, //The format of the element, in this case 32 bits of each sub element - BMD
+	0, //Input slot - BMD
+	44, //Offset, this will increase as we add more elements(such texture coords) to the layout - BMD
+	D3D10_INPUT_PER_VERTEX_DATA, //Input classification - BMD
+	0 }, //Instance Data slot - BMD
 };
 
 const char basicEffect[]=\
@@ -315,6 +331,34 @@ void D3D10Renderer::render()
 					ID3D10EffectShaderResourceVariable * pSpecularTextureVar=pCurrentEffect->GetVariableByName("specularTexture")->AsShaderResource();
 					pSpecularTextureVar->SetResource(pMaterial->getSpecularTexture());
 				}
+
+				if(pMaterial->getBumpTexture())
+				{
+					ID3D10EffectShaderResourceVariable * pBumpTextureVar=pCurrentEffect->GetVariableByName("bumpTexture")->AsShaderResource();
+					pBumpTextureVar->SetResource(pMaterial->getBumpTexture());
+				}
+
+				if(pMaterial->getHeightTexture())
+				{
+					ID3D10EffectShaderResourceVariable * pHeightTextureVar=pCurrentEffect->GetVariableByName("heightTexture")->AsShaderResource();
+					pHeightTextureVar->SetResource(pMaterial->getHeightTexture());
+				}
+				/*ID3D10EffectVectorVariable *pAmbientMatVar=pCurrentEffect->GetVariableByName("ambientMaterial")->AsVector();
+				ID3D10EffectVectorVariable *pDiffuseMatVar=pCurrentEffect->GetVariableByName("diffuseMaterial")->AsVector();
+				ID3D10EffectVectorVariable *pSpecularMatVar=pCurrentEffect->GetVariableByName("specularMaterial")->AsVector();
+
+				if (pAmbientMatVar)
+				{
+					pAmbientMatVar->SetFloatVector((float*)&pMaterial->getAmbient());
+				}
+				if (pDiffuseMatVar)
+				{
+					pDiffuseMatVar->SetFloatVector((float*)&pMaterial->getDiffuse());
+				}
+				if (pSpecularMatVar)
+				{
+					pSpecularMatVar->SetFloatVector((float*)&pMaterial->getSpecular());
+				}*/
 			}
 
 			ID3D10EffectMatrixVariable * pWorldMatrixVar=pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();

@@ -44,3 +44,25 @@ bool Material::loadSpecularTexture(const string& filename, IRenderer * pRenderer
 	}
 	return true;
 }
+
+bool Material::loadBumpTexture(const string& filename, IRenderer * pRenderer)
+{
+	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
+	m_pBumpTexture = pD3D10Renderer->loadTexture(filename.c_str());
+	if (!m_pBumpTexture)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool Material::loadHeightTexture(const string& filename, IRenderer * pRenderer)
+{
+	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
+	m_pHeightTexture = pD3D10Renderer->loadTexture(filename.c_str());
+	if (!m_pHeightTexture)
+	{
+		return false;
+	}
+	return true;
+}

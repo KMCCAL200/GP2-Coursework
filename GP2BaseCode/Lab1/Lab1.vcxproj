@@ -98,6 +98,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_C.bmp" />
+    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_D.bmp" />
+    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_N.bmp" />
+    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_O.bmp" />
     <None Include="Effects\Texture.fx" />
     <None Include="Effects\Transform.fx" />
     <None Include="game.cfg" />

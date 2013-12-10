@@ -16,6 +16,9 @@
     <Filter Include="Effects">
       <UniqueIdentifier>{ce937571-0e50-4afb-8b7b-a92c1bf72cc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{1ebc0581-0a04-4e4e-a37a-de26fe4501b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -32,6 +35,18 @@
     </None>
     <None Include="Effects\Transform.fx">
       <Filter>Effects</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_C.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_D.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_N.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="..\..\..\..\..\..\smcvei200\Desktop\Textures\sword2_O.bmp">
+      <Filter>Textures</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
