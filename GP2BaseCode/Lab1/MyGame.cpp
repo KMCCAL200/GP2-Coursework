@@ -47,12 +47,15 @@ bool MyGame::initGame()
                 pMaterial=new Material();
                 pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
                 pMaterial->loadDiffuseTexture("Textures/2h_axe.BMP",m_pRenderer);
+				pMaterial->loadBumpTexture("BumpTextures/2h_axeN.bmp",m_pRenderer);
                 iter->second->addComponent(pMaterial);
                 VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
                 pVisual->createVertexLayout(m_pRenderer);
         }
 
         m_GameObjectList.push_back(pAxe);
+
+		
 	
 
 		

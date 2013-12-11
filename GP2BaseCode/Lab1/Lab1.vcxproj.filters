@@ -22,6 +22,9 @@
     <Filter Include="Textures">
       <UniqueIdentifier>{5bdd6d78-663f-4240-839b-5865a3d7a7a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BumpTextures">
+      <UniqueIdentifier>{154b094f-cd24-4370-9beb-99393bbb6936}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -50,6 +53,21 @@
     </None>
     <None Include="Effects\Texture.fx">
       <Filter>Effects</Filter>
+    </None>
+    <None Include="Effects\BumpMapping.fx">
+      <Filter>Effects</Filter>
+    </None>
+    <None Include="Effects\ParallaxMapping.fx">
+      <Filter>Effects</Filter>
+    </None>
+    <None Include="BumpTextures\2h_axeD.bmp">
+      <Filter>BumpTextures</Filter>
+    </None>
+    <None Include="BumpTextures\2h_axeN.bmp">
+      <Filter>BumpTextures</Filter>
+    </None>
+    <None Include="BumpTextures\2h_axeS.bmp">
+      <Filter>BumpTextures</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

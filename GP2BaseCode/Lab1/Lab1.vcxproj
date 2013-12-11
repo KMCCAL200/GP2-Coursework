@@ -104,6 +104,11 @@
     <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\1h_axe.fbx" />
     <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\2h_axe.bmp" />
     <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\2h_axe.fbx" />
+    <None Include="BumpTextures\2h_axeD.bmp" />
+    <None Include="BumpTextures\2h_axeN.bmp" />
+    <None Include="BumpTextures\2h_axeS.bmp" />
+    <None Include="Effects\BumpMapping.fx" />
+    <None Include="Effects\ParallaxMapping.fx" />
     <None Include="Effects\Texture.fx" />
     <None Include="Effects\Transform.fx" />
     <None Include="game.cfg" />
