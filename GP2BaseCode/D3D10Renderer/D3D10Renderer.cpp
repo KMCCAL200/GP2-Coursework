@@ -332,48 +332,12 @@ void D3D10Renderer::render(GameObject *pObject)
 					pSpecularTextureVar->SetResource(pMaterial->getSpecularTexture());
 				}
 
-				//ID3D10EffectVectorVariable *pAmbientMatVar=pCurrentEffect->GetVariableByName("ambientMaterial")->AsVector();
-			//ID3D10EffectVectorVariable *pDiffuseMatVar=pCurrentEffect->GetVariableByName("diffuseMaterial")->AsVector();
-			/*ID3D10EffectVectorVariable *pSpecularMatVar=pCurrentEffect->GetVariableByName("specularMaterial")->AsVector();
-
-			if (pAmbientMatVar)
-			{
-				pAmbientMatVar->SetFloatVector((float*)&pMaterial->getAmbient());
-			}
-			if (pDiffuseMatVar)
-			{
-				pDiffuseMatVar->SetFloatVector((float*)&pMaterial->getDiffuse());
-			}
-			if (pSpecularMatVar)
-			{
-				pSpecularMatVar->SetFloatVector((float*)&pMaterial->getSpecular());
-			}
-			}*/
+			
 
 			ID3D10EffectMatrixVariable * pWorldMatrixVar=pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();
 			ID3D10EffectMatrixVariable * pViewMatrixVar=pCurrentEffect->GetVariableByName("matView")->AsMatrix();
 			ID3D10EffectMatrixVariable * pProjectionMatrixVar=pCurrentEffect->GetVariableByName("matProjection")->AsMatrix();
-			//ID3D10EffectVectorVariable *pAmbientLightColourVar=pCurrentEffect->GetVariableByName("ambientLightColour")->AsVector();
-			
-			/*if (m_pMainLight)
-		{
-			DirectionLightComponent*pDirectionLightComponent=static_cast<DirectionLightComponent*>(m_pMainLight->getComponent("DirectionalLight"));
-			if (pDirectionLightComponent){
-				//ID3D10EffectVectorVariable *pDiffuseLightVar=pCurrentEffect->GetVariableByName("diffuseLightColour")->AsVector();
-				//ID3D10EffectVectorVariable *pSpecularLightVar=pCurrentEffect->GetVariableByName("specularLightColour")->AsVector();
-				ID3D10EffectVectorVariable *pLightDirVar=pCurrentEffect->GetVariableByName("lightDirection")->AsVector();
-
-				//pDiffuseLightVar->SetFloatVector((float*)&pDirectionLightComponent->getDiffuse());
-				//pSpecularLightVar->SetFloatVector((float*)&pDirectionLightComponent->getSpecular());
-				pLightDirVar->SetFloatVector((float*)&pDirectionLightComponent->getDirection());
-			}
-		}*/
-			/*	if (m_pMainCamera)
-		{
-			Transform t=m_pMainCamera->getTransform();
-			ID3D10EffectVectorVariable *pCameraVar=pCurrentEffect->GetVariableByName("cameraPosition")->AsVector();
-			pCameraVar->SetFloatVector((float*)&t.getPosition());
-		}*/
+	
 
 			if (pWorldMatrixVar)
 			{
