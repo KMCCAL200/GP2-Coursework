@@ -11,7 +11,8 @@ bool MyGame::initGame()
 	//pMaterial->loadEffect("Effects/DirectionalLight.fx",m_pRenderer);
 
 	pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
-	pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+	pMaterial->loadDiffuseTexture("Textures/ground1_color.jpg",m_pRenderer);
+	//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
 	DirectionLightComponent *pDirLight = new  DirectionLightComponent();
 
 	GameObject *pTestObj=new GameObject();
@@ -22,10 +23,9 @@ bool MyGame::initGame()
 	pCube->createVertexLayout(m_pRenderer);
 
 	pTestObj->getTransform().setPosition(0.0f,0.0f,0.0f);
-	pTestObj->getTransform().setScale(2.0f,1.0f,1.0f);
+	pTestObj->getTransform().setScale(1.0f,1.0f,1.0f);
 
-//m_GameObjectList.push_back(pTestObj);
-
+	m_GameObjectList.push_back(pTestObj);
 
 	//==================================================CAMERA
 	CameraComponent *pCameraComp=new CameraComponent();
@@ -65,7 +65,7 @@ bool MyGame::initGame()
 
 	}
 
-	m_GameObjectList.push_back(pAxe);
+	//m_GameObjectList.push_back(pAxe);
 	//===================================
 	GameObject *pCar = m_ModelLoader.loadModelFromFile("Models/armoredrecon.fbx",m_pRenderer);
 	pCar->setName("Armored Recon");
@@ -86,7 +86,7 @@ bool MyGame::initGame()
 		pVisual->createVertexLayout(m_pRenderer);
 
 	}
-	m_GameObjectList.push_back(pCar);
+	//m_GameObjectList.push_back(pCar);
 	//================================================Building
 	/*GameObject *pBuilding = m_ModelLoader.loadModelFromFile("Models/armorstand.fbx",m_pRenderer);
 	pAxe->setName("Building");
