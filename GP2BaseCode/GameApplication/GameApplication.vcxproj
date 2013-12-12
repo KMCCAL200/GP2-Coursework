@@ -84,6 +84,7 @@
     <ClInclude Include="CubeVisualComponent.h" />
     <ClInclude Include="DirectionLightComponent.h" />
     <ClInclude Include="EffectComponent.h" />
+    <ClInclude Include="FPSMove.h" />
     <ClInclude Include="GameApplication.h" />
     <ClInclude Include="GameComponent.h" />
     <ClInclude Include="GameObject.h" />

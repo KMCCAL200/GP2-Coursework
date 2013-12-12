@@ -9,9 +9,9 @@ using namespace std;
 
 class GameObject
 {
-	public:
-        typedef map<const string, GameObject*> ChildrenGameObjects;
-        typedef map<const string, GameObject*>::iterator ChildrenGameObjectsIter;
+public:
+		typedef map<const string, GameObject*> ChildrenGameObjects;
+		typedef map<const string, GameObject*>::iterator ChildrenGameObjectsIter;
 public:
 	GameObject()
 	{
@@ -45,32 +45,32 @@ public:
 	void clearChildren();
 	void clearComponents();
 	void update();
-	      void addChild(GameObject *pChild);
-        void setParent(GameObject *pParent)
-        {
-                m_pParent=pParent;
-        };
+	void addChild(GameObject *pChild);
+		  void setParent(GameObject *pParent)
+		{
+			m_pParent=pParent;
+		};
 
-        GameObject * getParent()
-        {
-                return m_pParent;
-        };
+		GameObject * getParent()
+		{
+			return m_pParent;
+		};
 
-        const string& getName()
-        {
-                return m_Name;
-        };
+		const string& getName()
+		{
+			return m_Name;
+		};
 
 
-        ChildrenGameObjectsIter getFirstChild()
-        {
-                return m_Children.begin();
-        };
+		ChildrenGameObjectsIter getFirstChild()
+		{
+			return m_Children.begin();
+		};
 
-        ChildrenGameObjectsIter getLastChild()
-        {
-                return m_Children.end();
-        };
+		ChildrenGameObjectsIter getLastChild()
+		{
+			return m_Children.end();
+		};
 
 private:
 	Transform m_Transform;
@@ -78,6 +78,6 @@ private:
 	typedef map<const GameComponent::goc_id_type,GameComponent*> ComponentTable;
 	typedef map<const GameComponent::goc_id_type,GameComponent*>::iterator ComponentTableIter;
 	ComponentTable m_Components;
-	  ChildrenGameObjects m_Children;
-        GameObject * m_pParent;
+	ChildrenGameObjects m_Children;
+	  GameObject * m_pParent;
 };

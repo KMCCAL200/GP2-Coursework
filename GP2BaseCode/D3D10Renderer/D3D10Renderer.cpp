@@ -243,8 +243,6 @@ void D3D10Renderer::render(GameObject *pObject)
 	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
 
 
-
-
 		int noIndices=0;
 		int noVerts=0;
 		ID3D10Buffer *pIndexBuffer=NULL;
@@ -254,8 +252,7 @@ void D3D10Renderer::render(GameObject *pObject)
 		ID3D10InputLayout *pCurrentLayout=m_pDefaultVertexLayout;
 
 		//GameObject * pObject=m_RenderQueue.front();
-		if(pObject)
-		{
+		
 			//Grab Transform
 			Transform transform=pObject->getTransform();
 
@@ -334,13 +331,14 @@ void D3D10Renderer::render(GameObject *pObject)
 					ID3D10EffectShaderResourceVariable * pSpecularTextureVar=pCurrentEffect->GetVariableByName("specularTexture")->AsShaderResource();
 					pSpecularTextureVar->SetResource(pMaterial->getSpecularTexture());
 				}
-			}
+
+			
 
 			ID3D10EffectMatrixVariable * pWorldMatrixVar=pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();
 			ID3D10EffectMatrixVariable * pViewMatrixVar=pCurrentEffect->GetVariableByName("matView")->AsMatrix();
 			ID3D10EffectMatrixVariable * pProjectionMatrixVar=pCurrentEffect->GetVariableByName("matProjection")->AsMatrix();
+	
 
-			
 			if (pWorldMatrixVar)
 			{
 				pWorldMatrixVar->SetMatrix((float*)&transform.getWorld());
@@ -370,9 +368,9 @@ void D3D10Renderer::render(GameObject *pObject)
 				else if (pVertexBuffer)
 					m_pD3D10Device->Draw(noVerts,0);
 			}
-	}
+	
 }
-
+			}
 void D3D10Renderer::present()
 {
 	//Swaps the buffers in the chain, the back buffer to the front(screen)
@@ -535,6 +533,18 @@ ID3D10InputLayout * D3D10Renderer::createVertexLayout(ID3D10Effect * pEffect)
 
 void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 {
+	/*DirectionLightComponent *pLight=static_cast<DirectionLightComponent*>(pObject->getComponent("DirectionalLight"));
+	if (pLight)
+	{
+		m_pMainLight=pObject;
+	}
+	CameraComponent *pCamera=static_cast<CameraComponent*>(pObject->getComponent("Camera"));
+	if (pCamera)
+	{
+		m_pMainCamera=pObject;
+	}
+	*/
+	
 	m_RenderQueue.push(pObject);
 }
 
