@@ -46,18 +46,20 @@ float power: POWER < string UIName = "Specular Power";
 struct VS_INPUT
 {
 	float4 pos:POSITION;
+	float2 texCoord:TEXCOORD0;
 	float3 normal:NORMAL;
 	float3 tangent: TANGENT;
-	float2 texCoord:TEXCOORD0;
+	
 };
 
 struct PS_INPUT
 {
 	float4 pos:SV_POSITION;
+	float2 texCoord: TEXCOORD0;
 	float3 normal:NORMAL;
 	float3 viewDir: VIEWDIR;
 	float3 lightDir: LIGHTDIR;
-	float2 texCoord: TEXCOORD0;
+	
 };
 
 Texture2D diffuseMap;
@@ -96,15 +98,15 @@ PS_INPUT VS(VS_INPUT input)
 float4 PS(PS_INPUT input):SV_TARGET
 {
 	float3 normal = normalize((2*(bumpMap.Sample(WrapPointSampler,input.texCoord)))-1.0);
-	//float3 normal=bumpMap.Sample(WrapPointSampler,input.texCoord);
+	
 	float3 lightDir = normalize(lightDirection);
 	float diffuseHighlight = saturate(dot(normal,lightDir));
 	float3 halfVec = normalize(lightDir+ input.viewDir);
 	float specular = pow(saturate(dot(normal, halfVec)),power);
 	float4 diffuseTextureColour= diffuseMap.Sample(WrapPointSampler,input.texCoord);
-	//return float4(1.0f,1.0f,1.0f,1.0f);
+	
 	return (ambientMaterial*ambientLightColour)+((diffuseMaterial+diffuseTextureColour)*diffuseLightColour*diffuseHighlight)+(specularMaterial*specularLightColour*specular);
-	//return diffuseTextureColour;
+	
 	}
 
 RasterizerState DisableCulling

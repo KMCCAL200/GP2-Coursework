@@ -37,7 +37,7 @@ bool MyGame::initGame()
 
         m_GameObjectList.push_back(pCameraGO);
 		Material *pMaterial=new Material();
-		
+		DirectionLightComponent *pDirLight = new  DirectionLightComponent();
 	
 		//==============================Model
 		GameObject *pAxe=m_ModelLoader.loadModelFromFile("Models/2h_axe.fbx",m_pRenderer);
@@ -45,14 +45,16 @@ bool MyGame::initGame()
         for(GameObject::ChildrenGameObjectsIter iter=pAxe->getFirstChild();iter!=pAxe->getLastChild();iter++)
         {
                 pMaterial=new Material();
-                pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+				//pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+                pMaterial->loadEffect("Effects/BumpMapping.fx",m_pRenderer);
                 pMaterial->loadDiffuseTexture("Textures/2h_axe.BMP",m_pRenderer);
 				pMaterial->loadBumpTexture("BumpTextures/2h_axeN.bmp",m_pRenderer);
+				iter->second->addComponent(pDirLight);
                 iter->second->addComponent(pMaterial);
                 VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
                 pVisual->createVertexLayout(m_pRenderer);
         }
-
+		//pAxe->addComponent(pDirLight);
         m_GameObjectList.push_back(pAxe);
 
 		

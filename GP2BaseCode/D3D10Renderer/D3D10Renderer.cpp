@@ -342,7 +342,7 @@ void D3D10Renderer::render(GameObject *pObject)
 				//Retrieve & send material stuff
 				if (pMaterial->getDiffuseTexture())
 				{
-					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseTexture")->AsShaderResource();
+					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseMap")->AsShaderResource();
 					pDiffuseTextureVar->SetResource(pMaterial->getDiffuseTexture());
 				}
 				if (pMaterial->getSpecularTexture())
@@ -353,13 +353,13 @@ void D3D10Renderer::render(GameObject *pObject)
 
 				if(pMaterial->getBumpTexture())
 				{
-					ID3D10EffectShaderResourceVariable * pBumpTextureVar=pCurrentEffect->GetVariableByName("bumpTexture")->AsShaderResource();
+					ID3D10EffectShaderResourceVariable * pBumpTextureVar=pCurrentEffect->GetVariableByName("bumpMap")->AsShaderResource();
 					pBumpTextureVar->SetResource(pMaterial->getBumpTexture());
 				}
 
 				if(pMaterial->getHeightTexture())
 				{
-					ID3D10EffectShaderResourceVariable * pHeightTextureVar=pCurrentEffect->GetVariableByName("heightTexture")->AsShaderResource();
+					ID3D10EffectShaderResourceVariable * pHeightTextureVar=pCurrentEffect->GetVariableByName("heightMap")->AsShaderResource();
 					pHeightTextureVar->SetResource(pMaterial->getHeightTexture());
 				}
 				/*ID3D10EffectVectorVariable *pAmbientMatVar=pCurrentEffect->GetVariableByName("ambientMaterial")->AsVector();
