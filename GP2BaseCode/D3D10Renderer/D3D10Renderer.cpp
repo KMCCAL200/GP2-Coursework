@@ -310,17 +310,17 @@ void D3D10Renderer::render(GameObject *pObject)
 			//=========================DIRECTION LIGHT==============================================================
 			ID3D10EffectVectorVariable *pAmbientLightColourVar=pCurrentEffect->GetVariableByName("ambientLightColour")->AsVector();
 
-			DirectionLightComponent *pDirectionLightComponent = static_cast<DirectionLightComponent *>(pObject->getComponent("DirectionLight"));
+			DirectionLightComponent *pDirectionLightComponent = static_cast<DirectionLightComponent *>(pObject->getComponent("lightDirection"));
 			if(pDirectionLightComponent)
 			{
 				ID3D10EffectVectorVariable * pDiffuseLight = 
-					pCurrentEffect->GetVariableByName("DiffuseLightColour")->AsVector();
+					pCurrentEffect->GetVariableByName("diffuseLightColour")->AsVector();
 
 				ID3D10EffectVectorVariable * pSpecularLight = 
-					pCurrentEffect->GetVariableByName("SpecularLightColour")->AsVector();
+					pCurrentEffect->GetVariableByName("specularLightColour")->AsVector();
 
 				ID3D10EffectVectorVariable * pLightDir = 
-					pCurrentEffect->GetVariableByName("LightDirection")->AsVector();
+					pCurrentEffect->GetVariableByName("lightDirection")->AsVector();
 
 				pDiffuseLight->SetFloatVector((float*)&pDirectionLightComponent->getDiffuse());			
 				pSpecularLight->SetFloatVector((float*)&pDirectionLightComponent->getSpecular());
@@ -342,7 +342,7 @@ void D3D10Renderer::render(GameObject *pObject)
 				//Retrieve & send material stuff
 				if (pMaterial->getDiffuseTexture())
 				{
-					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseMap")->AsShaderResource();
+					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseTexture")->AsShaderResource();
 					pDiffuseTextureVar->SetResource(pMaterial->getDiffuseTexture());
 				}
 				if (pMaterial->getSpecularTexture())
@@ -362,7 +362,7 @@ void D3D10Renderer::render(GameObject *pObject)
 					ID3D10EffectShaderResourceVariable * pHeightTextureVar=pCurrentEffect->GetVariableByName("heightMap")->AsShaderResource();
 					pHeightTextureVar->SetResource(pMaterial->getHeightTexture());
 				}
-				/*ID3D10EffectVectorVariable *pAmbientMatVar=pCurrentEffect->GetVariableByName("ambientMaterial")->AsVector();
+				ID3D10EffectVectorVariable *pAmbientMatVar=pCurrentEffect->GetVariableByName("ambientMaterial")->AsVector();
 				ID3D10EffectVectorVariable *pDiffuseMatVar=pCurrentEffect->GetVariableByName("diffuseMaterial")->AsVector();
 				ID3D10EffectVectorVariable *pSpecularMatVar=pCurrentEffect->GetVariableByName("specularMaterial")->AsVector();
 
@@ -377,7 +377,7 @@ void D3D10Renderer::render(GameObject *pObject)
 				if (pSpecularMatVar)
 				{
 					pSpecularMatVar->SetFloatVector((float*)&pMaterial->getSpecular());
-				}*/
+				}
 			}
 
 			ID3D10EffectMatrixVariable * pWorldMatrixVar=pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();

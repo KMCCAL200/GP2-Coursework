@@ -45,8 +45,8 @@ bool MyGame::initGame()
         for(GameObject::ChildrenGameObjectsIter iter=pAxe->getFirstChild();iter!=pAxe->getLastChild();iter++)
         {
                 pMaterial=new Material();
-				//pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
-                pMaterial->loadEffect("Effects/BumpMapping.fx",m_pRenderer);
+				pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+               // pMaterial->loadEffect("Effects/BumpMapping.fx",m_pRenderer);
                 pMaterial->loadDiffuseTexture("Textures/2h_axe.BMP",m_pRenderer);
 				pMaterial->loadBumpTexture("BumpTextures/2h_axeN.bmp",m_pRenderer);
 				iter->second->addComponent(pDirLight);
