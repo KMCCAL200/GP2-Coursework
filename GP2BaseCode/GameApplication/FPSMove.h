@@ -6,38 +6,24 @@
 #include <windows.h>
 #define _XM_NO_INTRINSICS_
 #include <xnamath.h>
+#include "CXBOXController.h"
+
 using namespace std;
+
 class FPSMove{
+
 public:
-	FPSMove(){};
+	FPSMove()
+	{
+		dir = 0.5;
+		Player1 = new CXBOXController(1);
+	};
+
 	~FPSMove(){};
 
-	XMFLOAT3 movement(XMFLOAT3 fps)
-	{		
-		float x = fps.x;
-		float y = fps.y;
-		float dir = 1;
+	CXBOXController* Player1;
+	float dir;
 
-		if(GetAsyncKeyState(VK_UP))
-		{	
-			//move camera forwars
-			fps.x=x+dir;
-		}
-		if(GetAsyncKeyState(VK_DOWN))
-		{
-			//move the camera back
-			fps.x=x-dir;
-		}
-		if(GetAsyncKeyState(VK_LEFT))
-		{
-			//move the camera left
-			fps.y=y-dir;
-		}
-		if(GetAsyncKeyState(VK_RIGHT))
-		{
-			//move the camera right
-			fps.y=y+dir;
-		}
-		return fps;
-	};
+	XMFLOAT3 cameraPos(XMFLOAT3 fps);
+	XMFLOAT3 lookAt(XMFLOAT3 fpsv);
 };

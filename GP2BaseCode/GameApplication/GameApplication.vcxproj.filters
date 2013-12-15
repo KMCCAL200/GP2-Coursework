@@ -1,32 +1,93 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="CameraComponent.cpp" />
-    <ClCompile Include="CubeVisualComponent.cpp" />
-    <ClCompile Include="GameApplication.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Material.cpp" />
-    <ClCompile Include="VisualComponent.cpp" />
-    <ClCompile Include="ModelLoader.cpp" />
-    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="CubeVisualComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModelLoader.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameApplication.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="VisualComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraComponent.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="CXBOXController.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSMove.cpp">
+      <Filter>Current</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CameraComponent.h" />
-    <ClInclude Include="Components.h" />
-    <ClInclude Include="CubeVisualComponent.h" />
-    <ClInclude Include="DirectionLightComponent.h" />
-    <ClInclude Include="EffectComponent.h" />
-    <ClInclude Include="GameApplication.h" />
-    <ClInclude Include="GameComponent.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="LightComponent.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="Transform.h" />
-    <ClInclude Include="VisualComponent.h" />
-    <ClInclude Include="ModelLoader.h" />
-    <ClInclude Include="FPSMove.h" />
+    <ClInclude Include="FPSMove.h">
+      <Filter>Current</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraComponent.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Components.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CubeVisualComponent.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="DirectionLightComponent.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectComponent.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameApplication.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameComponent.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="LightComponent.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="ModelLoader.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="VisualComponent.h">
+      <Filter>Header</Filter>
+    </ClInclude>
+    <ClInclude Include="CXBOXController.h">
+      <Filter>Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ReadMe.txt" />
+    <Filter Include="Header">
+      <UniqueIdentifier>{abaeab34-e46f-40f1-9672-e685ffc77129}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Current">
+      <UniqueIdentifier>{bcdd5894-b10a-4c59-8c28-f7dfcfa49bbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{93ac08db-e6d4-475f-a7c2-b578b1123645}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@ bool MyGame::initGame()
 	pTestObj->addComponent(pDirLight);
 	pCube->createVertexLayout(m_pRenderer);
 	
-	pTestObj->getTransform().setPosition(-0.5f,0.0f,1.0f);
+	pTestObj->getTransform().setPosition(0.0f,0.0f,0.0f);
 
 	m_GameObjectList.push_back(pTestObj);
 
@@ -26,12 +26,11 @@ bool MyGame::initGame()
 		CameraComponent *pCameraComp=new CameraComponent();
         pCameraComp->setLook(0.0f,0.0f,0.0f);
         pCameraComp->setFOV(m_GameOptionDesc.width/m_GameOptionDesc.height);
-        //Create Camera
         GameObject *pCameraGO=new GameObject();
         pCameraGO->setName("MainCamera");
         pCameraGO->addComponent(pCameraComp);
         setMainCamera(pCameraComp);
-        pCameraGO->getTransform().setPosition(-10.0f,-100.0f,-100.0f);
+        pCameraGO->getTransform().setPosition(-100.0f,0.0f,0.0f);
 
         m_GameObjectList.push_back(pCameraGO);
 	
