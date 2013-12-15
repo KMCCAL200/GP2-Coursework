@@ -10,3 +10,4 @@ void CameraComponent::update()
     m_Projection=XMMatrixPerspectiveFovLH(m_FOV,m_AspectRatio,m_Near,m_Far);
 
 }
+//
