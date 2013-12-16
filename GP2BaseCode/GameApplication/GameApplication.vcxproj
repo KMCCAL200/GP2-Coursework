@@ -76,6 +76,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <ClInclude Include="CameraComponent.h" />
     <ClInclude Include="Components.h" />
     <ClInclude Include="CubeVisualComponent.h" />
@@ -89,6 +92,8 @@
     <ClInclude Include="LightComponent.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="ModelLoader.h" />
+    <ClInclude Include="ModelManager.h" />
+    <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="VisualComponent.h" />
   </ItemGroup>
@@ -101,6 +106,8 @@
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="VisualComponent.cpp" />
   </ItemGroup>

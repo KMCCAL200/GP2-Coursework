@@ -231,9 +231,23 @@ void D3D10Renderer::render()
                         GameObject *pCurrentObject=(*iter).second;
                         render(pCurrentObject);
                 }
+
                 render(pObject);
+
+				//if pObject is testCube then
+				//Change position
+				//Render again
+				/*if(pObject->getName()=="TestObject")
+				{
+					
+					pObject->getTransform().setPosition(2.0f,1.0f,0.0f);
+					//pObject->getTransform().setPosition(2.0f,1.0f,0.0f);
+					render(pObject);
+					//m_RenderQueue.pop();
+				}*/
                 m_RenderQueue.pop();
-        }
+				
+				}
 
 }
 
