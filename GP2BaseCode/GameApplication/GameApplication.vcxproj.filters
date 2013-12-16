@@ -9,6 +9,8 @@
     <ClCompile Include="VisualComponent.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraComponent.h" />
@@ -24,6 +26,8 @@
     <ClInclude Include="Transform.h" />
     <ClInclude Include="VisualComponent.h" />
     <ClInclude Include="ModelLoader.h" />
+    <ClInclude Include="ModelManager.h" />
+    <ClInclude Include="ObjectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />

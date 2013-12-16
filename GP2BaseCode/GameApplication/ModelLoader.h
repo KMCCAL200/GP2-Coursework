@@ -2,6 +2,7 @@
 
 #define FBXSDK_NEW_API
 
+#include "ModelManager.h"
 #include <string>
 
 #include "..\Renderer\Renderer.h"
@@ -20,4 +21,5 @@ public:
         GameObject * loadModelFromFile(const string& filename, IRenderer *pRenderer);
 private:
         GameObject * loadFbxModelFromFile(const string& filename, IRenderer *pRenderer);
+		ModelManager modelManager;
 };

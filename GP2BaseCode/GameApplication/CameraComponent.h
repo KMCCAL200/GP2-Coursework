@@ -13,7 +13,7 @@ public:
         {
                 m_Name="Camera";
                 m_LookAt=XMFLOAT3(0.0f,0.0f,0.0f);
-                m_Up=XMFLOAT3(0.0f,1.0f,0.0f);
+                m_Up=XMFLOAT3(0.0f,0.0f,1.0f);
                 m_View=XMMatrixIdentity();
                 m_Projection=XMMatrixIdentity();
                 m_FOV=XM_PI/4;
