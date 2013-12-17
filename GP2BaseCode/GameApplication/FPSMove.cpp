@@ -54,12 +54,12 @@ XMFLOAT3 FPSMove::lookAt(XMFLOAT3 fpsv)
 	//LOOK******************************************
 	if(Player1->GetState().Gamepad.sThumbRY < -10000)
 	{	
-		//move view point forward
+		//move view point up
 		fpsv.z=z+dir;
 	}
 	if(Player1->GetState().Gamepad.sThumbRY > 10000)
 	{
-		//move the view point back
+		//move the view point down
 		fpsv.z=z-dir;
 	}
 	if(Player1->GetState().Gamepad.sThumbRX > 10000)
@@ -72,7 +72,20 @@ XMFLOAT3 FPSMove::lookAt(XMFLOAT3 fpsv)
 		//move the view point right
 		fpsv.y=y+dir;
 	}
+	//////////////////
 
+	if(GetAsyncKeyState(VK_CONTROL))
+	{	
+		//move view point forward
+		//fpsv.x=x+dir;
 
-	return fpsv;
+		POINT ptCursorPos;
+		GetCursorPos(&ptCursorPos);
+		float px = ptCursorPos.x;
+		float py = ptCursorPos.y;
+		fpsv.y=px;
+		fpsv.z=py;
+	}
+
+		return fpsv;
 }
