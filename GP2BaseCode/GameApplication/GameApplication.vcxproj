@@ -83,6 +83,7 @@
     <ClInclude Include="Components.h" />
     <ClInclude Include="CubeVisualComponent.h" />
     <ClInclude Include="CXBOXController.h" />
+    <ClInclude Include="DebugMove.h" />
     <ClInclude Include="DirectionLightComponent.h" />
     <ClInclude Include="EffectComponent.h" />
     <ClInclude Include="FPSMove.h" />
@@ -101,6 +102,7 @@
     <ClCompile Include="CameraComponent.cpp" />
     <ClCompile Include="CubeVisualComponent.cpp" />
     <ClCompile Include="CXBOXController.cpp" />
+    <ClCompile Include="DebugMove.cpp" />
     <ClCompile Include="FPSMove.cpp" />
     <ClCompile Include="GameApplication.cpp" />
     <ClCompile Include="GameObject.cpp" />

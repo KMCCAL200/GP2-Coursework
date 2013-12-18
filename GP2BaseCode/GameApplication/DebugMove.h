@@ -10,20 +10,20 @@
 
 using namespace std;
 
-class FPSMove{
+class DebugMove{
 
 public:
-	FPSMove()
+	DebugMove()
 	{
 		dir = 0.5;
 		Player1 = new CXBOXController(1);
 	};
 
-	~FPSMove(){};
+	~DebugMove(){};
 
 	CXBOXController* Player1;
 	float dir;
 
 	XMFLOAT3 cameraPos(XMFLOAT3 fps);
-	XMFLOAT3 lookAt(XMFLOAT3 fpsv,XMFLOAT3 fps);
+	XMFLOAT3 lookAt(XMFLOAT3 fpsv);
 };

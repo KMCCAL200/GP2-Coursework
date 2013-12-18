@@ -13,6 +13,7 @@
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="CXBOXController.cpp" />
     <ClCompile Include="FPSMove.cpp" />
+    <ClCompile Include="DebugMove.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraComponent.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="CXBOXController.h" />
     <ClInclude Include="FPSMove.h" />
+    <ClInclude Include="DebugMove.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
