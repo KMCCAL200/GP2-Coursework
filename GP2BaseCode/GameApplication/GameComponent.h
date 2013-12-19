@@ -1,10 +1,3 @@
-//Components needed
-// Transform - Done
-// Material - Doneish!
-// Visual - 
-// Camera -
-// Directional Light - 
-
 #pragma once
 
 #include <string>

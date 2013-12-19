@@ -1,3 +1,4 @@
+//This file is Kerri McCallum's work
 #pragma once
 #include "CameraComponent.h"
 #include "Transform.h"
@@ -13,17 +14,19 @@ using namespace std;
 class FPSMove{
 
 public:
+	//Constructor
 	FPSMove()
 	{
 		dir = 0.5;
 		Player1 = new CXBOXController(1);
 	};
-
+	//Deconstructor
 	~FPSMove(){};
 
 	CXBOXController* Player1;
 	float dir;
-
+	//Function for setting camera postion
 	XMFLOAT3 cameraPos(XMFLOAT3 fps);
+	//Function for setting look at postion
 	XMFLOAT3 lookAt(XMFLOAT3 fpsv,XMFLOAT3 fps);
 };

@@ -1,3 +1,4 @@
+//This file is Kerri McCallum's work
 #include "FPSMove.h"
 //Moves the camera within the constraints of the world
 //Holds old mouse position

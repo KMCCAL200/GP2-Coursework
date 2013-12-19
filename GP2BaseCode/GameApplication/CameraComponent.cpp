@@ -1,3 +1,4 @@
+//This file is Kerri McCallum's work
 #include "CameraComponent.h"
 #include "Transform.h"
 #include "GameObject.h"

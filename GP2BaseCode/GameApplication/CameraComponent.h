@@ -1,3 +1,4 @@
+//This file is Kerri McCallum's work
 #pragma once
 
 #include "GameComponent.h"
@@ -9,6 +10,7 @@
 class CameraComponent:public GameComponent
 {
 public:
+	//Constructor
 	CameraComponent()
 	{
 		m_Name="Camera";
@@ -21,9 +23,9 @@ public:
 		m_Near=0.1f;
 		m_Far=1000.0f;
 	};
-
+	//Deconstructor
 	~CameraComponent(){}
-	
+
 	void update();
 
 	void setLook(float x,float y,float z)
