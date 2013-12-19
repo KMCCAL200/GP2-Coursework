@@ -310,23 +310,33 @@ void D3D10Renderer::render(GameObject *pObject)
 			//=========================DIRECTION LIGHT==============================================================
 			ID3D10EffectVectorVariable *pAmbientLightColourVar=pCurrentEffect->GetVariableByName("ambientLightColour")->AsVector();
 
-			DirectionLightComponent *pDirectionLightComponent = static_cast<DirectionLightComponent *>(pObject->getComponent("lightDirection"));
-			if(pDirectionLightComponent)
+			if(m_pMainLight)
 			{
-				ID3D10EffectVectorVariable * pDiffuseLight = 
-					pCurrentEffect->GetVariableByName("diffuseLightColour")->AsVector();
+				DirectionLightComponent *pDirectionLightComponent = static_cast<DirectionLightComponent *>(m_pMainLight->getComponent("lightDirection"));
+				if(pDirectionLightComponent)
+					{
+						ID3D10EffectVectorVariable * pDiffuseLight = 
+						pCurrentEffect->GetVariableByName("diffuseLightColour")->AsVector();
 
-				ID3D10EffectVectorVariable * pSpecularLight = 
-					pCurrentEffect->GetVariableByName("specularLightColour")->AsVector();
+						ID3D10EffectVectorVariable * pSpecularLight = 
+						pCurrentEffect->GetVariableByName("specularLightColour")->AsVector();
 
-				ID3D10EffectVectorVariable * pLightDir = 
-					pCurrentEffect->GetVariableByName("lightDirection")->AsVector();
+						ID3D10EffectVectorVariable * pLightDir = 
+						pCurrentEffect->GetVariableByName("lightDirection")->AsVector();
 
-				pDiffuseLight->SetFloatVector((float*)&pDirectionLightComponent->getDiffuse());			
-				pSpecularLight->SetFloatVector((float*)&pDirectionLightComponent->getSpecular());
-				pLightDir->SetFloatVector((float*)&pDirectionLightComponent->getDirection());
+						pDiffuseLight->SetFloatVector((float*)&pDirectionLightComponent->getDiffuse());			
+						pSpecularLight->SetFloatVector((float*)&pDirectionLightComponent->getSpecular());
+						pLightDir->SetFloatVector((float*)&pDirectionLightComponent->getDirection());
+				}
 			}
 			//======================================================================================================
+
+			if(m_pMainCamera)
+			{
+				Transform t=m_pMainCamera->getTransform();
+				ID3D10EffectVectorVariable *pCameraVar = pCurrentEffect->GetVariableByName("cameraPosition")->AsVector();
+				pCameraVar->SetFloatVector((float *)&t.getPosition());
+			}
 			//Do we have an Effect? If we don't then use default
 			Material *pMaterial=static_cast<Material*>(pObject->getComponent("Material"));
 			if (pMaterial)
@@ -342,7 +352,7 @@ void D3D10Renderer::render(GameObject *pObject)
 				//Retrieve & send material stuff
 				if (pMaterial->getDiffuseTexture())
 				{
-					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseTexture")->AsShaderResource();
+					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseMap")->AsShaderResource();
 					pDiffuseTextureVar->SetResource(pMaterial->getDiffuseTexture());
 				}
 				if (pMaterial->getSpecularTexture())
@@ -579,6 +589,17 @@ ID3D10InputLayout * D3D10Renderer::createVertexLayout(ID3D10Effect * pEffect)
 
 void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 {
+	DirectionLightComponent * pDirectionLightComponent=static_cast<DirectionLightComponent*>(pObject->getComponent("lightDirection"));
+	if(pDirectionLightComponent)
+	{
+		m_pMainLight = pObject;
+	}
+
+	CameraComponent * pCamera = static_cast<CameraComponent*>(pObject->getComponent("Camera"));
+	if(pCamera)
+	{
+		m_pMainCamera = pObject;
+	}
 	m_RenderQueue.push(pObject);
 }
 

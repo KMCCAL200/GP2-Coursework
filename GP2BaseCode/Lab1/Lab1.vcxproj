@@ -108,7 +108,9 @@
     <None Include="BumpTextures\2h_axeN.bmp" />
     <None Include="BumpTextures\2h_axeS.bmp" />
     <None Include="Effects\BumpMapping.fx" />
+    <None Include="Effects\DirectionalLight.fx" />
     <None Include="Effects\ParallaxMapping.fx" />
+    <None Include="Effects\Specular.fx" />
     <None Include="Effects\Texture.fx" />
     <None Include="Effects\Transform.fx" />
     <None Include="game.cfg" />

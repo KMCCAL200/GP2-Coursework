@@ -16,7 +16,7 @@
 
 #include "Vertex.h"
 
-
+class GameObject;
 //D3D10Renderer implements the Renderer interface
 class D3D10Renderer:public IRenderer
 {
@@ -47,21 +47,34 @@ public:
 		m_Projection = projection;
 	};
 
-void setAmbientLightColour(float r, float g, float b, float a)
-{
+	void setAmbientLightColour(float r, float g, float b, float a)
+	{
 
-	m_AmbientLightColour =XMFLOAT4(r,g,b,a);
-}
+		m_AmbientLightColour =XMFLOAT4(r,g,b,a);
+	}
 	
+	void setMainLight(GameObject * pLight)
+	{
+		m_pMainLight = pLight;
+	}
+
+	void setMainCamera(GameObject * pCamera)
+	{
+		m_pMainCamera = pCamera;
+	}
+
 	ID3D10ShaderResourceView * loadTexture(const char *pFileName);
 
 	void addToRenderQueue(GameObject *pObject);
+
+
 private:
 	bool createDevice(HWND pWindowHandle,int windowWidth, int windowHeight,
-bool fullScreen);
+	bool fullScreen);
 	bool createInitialRenderTarget(int windowWidth, int windowHeight);
 
-void render(GameObject *pCurrentObject);
+	void render(GameObject *pCurrentObject);
+
 private:
 	typedef std::queue<GameObject*> RenderQueue;
 	//D3D10 stuff
@@ -76,11 +89,11 @@ private:
 	//this will be used if we have no Effect
 	ID3D10Effect * m_pDefaultEffect;
 	ID3D10EffectTechnique * m_pDefaultTechnique;
-		XMFLOAT4 m_AmbientLightColour;
+	XMFLOAT4 m_AmbientLightColour;
 	RenderQueue m_RenderQueue;
 	
 	XMMATRIX m_View;
 	XMMATRIX m_Projection;
 	 GameObject * m_pMainCamera;
-        GameObject * m_pMainLight;
+     GameObject * m_pMainLight;
 };

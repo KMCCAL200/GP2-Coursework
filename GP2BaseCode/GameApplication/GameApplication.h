@@ -51,6 +51,7 @@ public:
 		m_pMainCamera = pMainCamera;
 	};
 
+	
 private:
 	bool parseConfigFile();
 	bool initInput();
@@ -67,7 +68,7 @@ protected:
 	GameOptionsDesc m_GameOptionDesc;
 	wstring m_ConfigFileName;
 	GameObjectList m_GameObjectList;
-
+	
 	CameraComponent * m_pMainCamera;
 	ModelLoader m_ModelLoader;
 	
