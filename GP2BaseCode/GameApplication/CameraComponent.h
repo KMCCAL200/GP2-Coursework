@@ -9,103 +9,100 @@
 class CameraComponent:public GameComponent
 {
 public:
-        CameraComponent()
-        {
-                m_Name="Camera";
-                m_LookAt=XMFLOAT3(0.0f,0.0f,0.0f);
-                m_Up=XMFLOAT3(0.0f,1.0f,0.0f);
-                m_View=XMMatrixIdentity();
-                m_Projection=XMMatrixIdentity();
-                m_FOV=XM_PI/4;
-                m_AspectRatio=800.0f/640.0f;
-                m_Near=0.1f;
-                m_Far=1000.0f;
-        };
+	CameraComponent()
+	{
+		m_Name="Camera";
+		m_LookAt=XMFLOAT3(0.0f,0.0f,0.0f);
+		m_Up=XMFLOAT3(0.0f,0.0f,1.0f);
+		m_View=XMMatrixIdentity();
+		m_Projection=XMMatrixIdentity();
+		m_FOV=XM_PI/4;
+		m_AspectRatio=800.0f/640.0f;
+		m_Near=0.1f;
+		m_Far=1000.0f;
+	};
 
-        ~CameraComponent()
-        {
-        }
+	~CameraComponent(){}
+	
+	void update();
 
+	void setLook(float x,float y,float z)
+	{
+		m_LookAt=XMFLOAT3(x,y,z);
+	};
 
-        void update();
+	void setUp(float x,float y,float z)
+	{
+		m_Up=XMFLOAT3(x,y,z);
+	};
 
-        void setLook(float x,float y,float z)
-        {
-                m_LookAt=XMFLOAT3(x,y,z);
-        };
+	void setFOV(float fov)
+	{
+		m_FOV=fov;
+	};
 
-        void setUp(float x,float y,float z)
-        {
-                m_Up=XMFLOAT3(x,y,z);
-        };
+	void setAspectRatio(float aspectRatio)
+	{
+		m_AspectRatio=aspectRatio;
+	};
 
-        void setFOV(float fov)
-        {
-                m_FOV=fov;
-        };
+	void setNearClip(float nearClip)
+	{
+		m_Near=nearClip;
+	};
 
-        void setAspectRatio(float aspectRatio)
-        {
-                m_AspectRatio=aspectRatio;
-        };
+	void setFarClip(float farClip)
+	{
+		m_Far=farClip;
+	};
 
-        void setNearClip(float nearClip)
-        {
-                m_Near=nearClip;
-        };
+	XMFLOAT3& getLookAt()
+	{
+		return m_LookAt;
+	};
 
-        void setFarClip(float farClip)
-        {
-                m_Far=farClip;
-        };
+	XMFLOAT3& getUp()
+	{
+		return m_Up;
+	};
 
-        XMFLOAT3& getLookAt()
-        {
-                return m_LookAt;
-        };
+	float getFOV()
+	{
+		return m_FOV;
+	};
 
-        XMFLOAT3& getUp()
-        {
-                return m_Up;
-        };
+	float getAspectRatio()
+	{
+		return m_AspectRatio;
+	};
 
-        float getFOV()
-        {
-                return m_FOV;
-        };
+	float getNear()
+	{
+		return m_Near;
+	};
 
-        float getAspectRatio()
-        {
-                return m_AspectRatio;
-        };
+	float getFar()
+	{
+		return m_Far;
+	};
 
-        float getNear()
-        {
-                return m_Near;
-        };
+	XMMATRIX& getView()
+	{
+		return m_View;
+	};
 
-        float getFar()
-        {
-                return m_Far;
-        };
-
-        XMMATRIX& getView()
-        {
-                return m_View;
-        };
-
-        XMMATRIX& getProjection()
-        {
-                return m_Projection;
-        };
+	XMMATRIX& getProjection()
+	{
+		return m_Projection;
+	};
 private:
-        XMFLOAT3 m_LookAt;
-        XMFLOAT3 m_Up;
-        float m_FOV;
-        float m_AspectRatio;
-        float m_Near;
-        float m_Far;
+	XMFLOAT3 m_LookAt;
+	XMFLOAT3 m_Up;
+	float m_FOV;
+	float m_AspectRatio;
+	float m_Near;
+	float m_Far;
 
-        XMMATRIX m_View;
-        XMMATRIX m_Projection;
+	XMMATRIX m_View;
+	XMMATRIX m_Projection;
 };
