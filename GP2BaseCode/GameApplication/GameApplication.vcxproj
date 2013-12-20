@@ -55,11 +55,9 @@
       <AdditionalDependencies>libfbxsdk-md.lib</AdditionalDependencies>
     </Lib>
     <Lib>
-<<<<<<< HEAD
-      <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2014.2\lib\vs2010\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-=======
+
       <AdditionalLibraryDirectories>C:\Program Files\Autodesk\FBX\FBX SDK\2014.1\lib\vs2010\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
->>>>>>> 3e1288f90efafcbf96fc3260269b88ae36210467
+
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
