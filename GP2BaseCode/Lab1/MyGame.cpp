@@ -4,27 +4,27 @@ bool MyGame::initGame()
 {
 
 	//===============================================Test Object
-	CubeVisualComponent *pCube=new CubeVisualComponent();
-	pCube->create(m_pRenderer);
+	//CubeVisualComponent *pCube=new CubeVisualComponent();
+	//pCube->create(m_pRenderer);
 
 	Material *pMaterial=new Material();
-	//pMaterial->loadEffect("Effects/DirectionalLight.fx",m_pRenderer);
+	////pMaterial->loadEffect("Effects/DirectionalLight.fx",m_pRenderer);
 
-	pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
-	pMaterial->loadDiffuseTexture("Textures/ground1_color.jpg",m_pRenderer);
-	//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+	//pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+	//pMaterial->loadDiffuseTexture("Textures/ground1_color.jpg",m_pRenderer);
+	////pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
 	DirectionLightComponent *pDirLight = new  DirectionLightComponent();
 
-	GameObject *pTestObj=new GameObject();
-	pTestObj->setName("TestObject");
-	pTestObj->addComponent(pCube);
-	
-	pTestObj->addComponent(pMaterial);
-	pTestObj->addComponent(pDirLight);
-	pCube->createVertexLayout(m_pRenderer);
+	//GameObject *pTestObj=new GameObject();
+	//pTestObj->setName("TestObject");
+	//pTestObj->addComponent(pCube);
+	//
+	//pTestObj->addComponent(pMaterial);
+	//pTestObj->addComponent(pDirLight);
+	//pCube->createVertexLayout(m_pRenderer);
 
-	pTestObj->getTransform().setPosition(0.0f,0.0f,0.0f);
-	pTestObj->getTransform().setScale(1.0f,1.0f,1.0f);
+	//pTestObj->getTransform().setPosition(0.0f,0.0f,0.0f);
+	//pTestObj->getTransform().setScale(1.0f,1.0f,1.0f);
 
 	//m_GameObjectList.push_back(pTestObj);
 
@@ -37,30 +37,50 @@ bool MyGame::initGame()
 	pCameraGO->setName("MainCamera");
 	pCameraGO->addComponent(pCameraComp);
 	setMainCamera(pCameraComp);
-	pCameraGO->getTransform().setPosition(150.0f,0.0f,10.0f);
+	pCameraGO->getTransform().setPosition(10.0f,400.0f,0.0f);
 	
 	m_GameObjectList.push_back(pCameraGO);
+	//============================================SkyBox - MD
+	//Create Skybox object
+	//GameObject *pSkyBox = m_ModelLoader.loadModelFromFile("SkyBox/cube2.fbx", m_pRenderer);
+	//pSkyBox->setName("SkyBox");
+
+
+	//for(GameObject::ChildrenGameObjectsIter iter=pSkyBox->getFirstChild();iter!=pSkyBox->getLastChild();iter++)
+	//{
+	//	//Add cube texture to cube mesh
+	//	pMaterial = new Material();
+	//	pMaterial->loadCubeTexture(m_pRenderer);
+	//	//Load Skybox effect
+	//	pMaterial->loadEffect("Effects/SkyBox.fx",m_pRenderer);
+	//	
+	//	pSkyBox->addComponent(pMaterial);
+	//	
+	//	VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
+
+	//	pVisual->createVertexLayout(m_pRenderer);
+	//}
+
+	////Set position to center, should be tied to camera
+	//pSkyBox->getTransform().setPosition(0.0f,0.0f,0.0f);
+	//m_GameObjectList.push_back(pSkyBox);
 
 	//==============================AXE MODEL
-	GameObject *pAxe = m_ModelLoader.loadModelFromFile("Models/Ground.fbx",m_pRenderer);
-	pAxe->setName("One Handed Axe");
-	
-	
-	//pAxe->addComponent(pDirLight);
+	GameObject *pGround = m_ModelLoader.loadModelFromFile("Models/Ground.fbx",m_pRenderer);
+	pGround->setName("Ground");
+
 	XMFLOAT3 pos;
 	XMFLOAT3 rot;
 	XMFLOAT3 scale;
-	for(GameObject::ChildrenGameObjectsIter iter=pAxe->getFirstChild();iter!=pAxe->getLastChild();iter++)
+
+	//positionObject(pAxe);
+
+	for(GameObject::ChildrenGameObjectsIter iter=pGround->getFirstChild();iter!=pGround->getLastChild();iter++)
 	{
 
-		pos = iter->second->getTransform().getPosition();
-		rot = iter->second->getTransform().getRotation();
-		scale = iter->second->getTransform().getScale();
-		
-		
-		//iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
-		//iter->second->getTransform().setRotation(0.0f,0.0f,0.0f);
-		
+		//pos = iter->second->getTransform().getPosition();
+		//rot = iter->second->getTransform().getRotation();
+		//scale = iter->second->getTransform().getScale();
 
 		pMaterial=new Material();
 		pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
@@ -72,30 +92,28 @@ bool MyGame::initGame()
 		pVisual->createVertexLayout(m_pRenderer);
 
 	}
-	//objectManager.add("HandAxe", pAxe);
-	pAxe->getTransform().setPosition(pos.x, pos.y,pos.z);
-	pAxe->getTransform().setRotation(rot.x,rot.y,rot.z);
-	pAxe->getTransform().setScale(scale.x,scale.y,scale.z);
-	m_GameObjectList.push_back(pAxe);
-//	pAxe = m_ModelLoader.loadModelFromFile("Models/boxex.fbx",m_pRenderer);
+	
+	//pGround->getTransform().setPosition(pos.x, pos.y,pos.z);
+	//pGround->getTransform().setRotation(rot.x,rot.y,rot.z);
+	//pGround->getTransform().setScale(scale.x,scale.y,scale.z);
+	//pGround->addComponent(pDirLight);
+	m_GameObjectList.push_back(pGround);
+
 	//===================================
-	GameObject *pCar = m_ModelLoader.loadModelFromFile("Models/Building1.fbx",m_pRenderer);
-	pCar->setName("Armored Recon");
-	//pAxe->addComponent(pDirLight);
-	for(GameObject::ChildrenGameObjectsIter iter=pCar->getFirstChild();iter!=pCar->getLastChild();iter++)
+	GameObject *pBuilding1 = m_ModelLoader.loadModelFromFile("Models/Building12.fbx",m_pRenderer);
+	pBuilding1->setName("Building1");
+	//positionObject(pBuilding1);
+
+	for(GameObject::ChildrenGameObjectsIter iter=pBuilding1->getFirstChild();iter!=pBuilding1->getLastChild();iter++)
 	{
-		pos = iter->second->getTransform().getPosition();
-		rot = iter->second->getTransform().getRotation();
-		scale = iter->second->getTransform().getScale();
-		//iter->second->getTransform().setPosition(0.0f,-1.0f,0.0f);
-		//iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
-		//iter->second->getTransform().setRotation(0.0f,0.0f,0.0f);
+		//pos = iter->second->getTransform().getPosition();
+		//rot = iter->second->getTransform().getRotation();
+		//scale = iter->second->getTransform().getScale();
 		
 		pMaterial=new Material();
 		//pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
 		//pMaterial->loadDiffuseTexture("Textures/bricks9_color.jpg",m_pRenderer);
 		pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
-		//pMaterial->loadDiffuseTexture("Textures/armoredrecon_diff.png",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
@@ -103,22 +121,27 @@ bool MyGame::initGame()
 		pVisual->createVertexLayout(m_pRenderer);
 
 	}
-	pCar->getTransform().setPosition(pos.x,pos.y,pos.z);
-	pCar->getTransform().setRotation(rot.x,rot.y,rot.z);
-	pCar->getTransform().setScale(scale.x,scale.y,scale.z);
-	m_GameObjectList.push_back(pCar);
+	/*pBuilding1->getTransform().setPosition(pos.x,pos.y,pos.z);
+	pBuilding1->getTransform().setRotation(rot.x,rot.y,rot.z);*/
+	//pBuilding1->getTransform().setScale(scale.x*100,scale.y*100,scale.z*100);
+	//pBuilding1->getTransform().setScale(scale.x,scale.y,scale.z);
+	m_GameObjectList.push_back(pBuilding1);
+
 	//================================================Building
-	/*GameObject *pBuilding = m_ModelLoader.loadModelFromFile("Models/armorstand.fbx",m_pRenderer);
-	pAxe->setName("Building");
-		for(GameObject::ChildrenGameObjectsIter iter=pBuilding->getFirstChild();iter!=pBuilding->getLastChild();iter++)
+	GameObject *pWall = m_ModelLoader.loadModelFromFile("Models/Wall2.fbx",m_pRenderer);
+	pWall->setName("Wall");
+
+	////positionObject(pWall);
+
+	for(GameObject::ChildrenGameObjectsIter iter=pWall->getFirstChild();iter!=pWall->getLastChild();iter++)
 	{
-		iter->second->getTransform().setPosition(0.0f,0.0f,0.0f);
-		iter->second->getTransform().setScale(0.4f,0.4f,0.4f);
-		iter->second->getTransform().setRotation(0.0f,0.0f,0.0f);
-		//iter->second->addComponent(pDirLight);
+	//	pos = iter->second->getTransform().getPosition();
+	//	rot = iter->second->getTransform().getRotation();
+	//	scale = iter->second->getTransform().getScale();
+	//	
 		pMaterial=new Material();
 		pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
-		//pMaterial->loadDiffuseTexture("Textures/armoredrecon.png",m_pRenderer);
+	//	//pMaterial->loadDiffuseTexture("Textures/armoredrecon.png",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
@@ -126,11 +149,94 @@ bool MyGame::initGame()
 		pVisual->createVertexLayout(m_pRenderer);
 
 	}
-	m_GameObjectList.push_back(pBuilding);*/
-
-
 	
+	pWall->getTransform().setPosition(pos.x,pos.y,pos.z);
+	pWall->getTransform().setRotation(rot.x,rot.y,rot.z);
+	pWall->getTransform().setScale(scale.x,scale.y,scale.z);
+	//m_GameObjectList.push_back(pWall);
+	////=============================================================
+	//
+	//GameObject *pArmourStand = m_ModelLoader.loadModelFromFile("Models/ArmourStand.fbx",m_pRenderer);
+	//pArmourStand->setName("Armour Stand");
 
+	////positionObject(pArmourStand);
+	//	for(GameObject::ChildrenGameObjectsIter iter=pArmourStand->getFirstChild();iter!=pArmourStand->getLastChild();iter++)
+	//{
+	//	pos = iter->second->getTransform().getPosition();
+	//	rot = iter->second->getTransform().getRotation();
+	//	scale = iter->second->getTransform().getScale();
+	//	
+	//	pMaterial=new Material();
+	//	pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+	//
+	//	iter->second->addComponent(pMaterial);
+
+	//	VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
+
+	//	pVisual->createVertexLayout(m_pRenderer);
+
+	//}
+	//
+	//pArmourStand->getTransform().setPosition(pos.x,pos.y,pos.z);
+	//pArmourStand->getTransform().setRotation(rot.x,rot.y,rot.z);
+	//pArmourStand->getTransform().setScale(scale.x,scale.y,scale.z);
+	//m_GameObjectList.push_back(pArmourStand);
+	////============================
+	//	GameObject *pTestBox = m_ModelLoader.loadModelFromFile("Models/TestBox.fbx",m_pRenderer);
+	//pTestBox->setName("Test Box");
+
+	////positionObject(pArmourStand);
+	//	for(GameObject::ChildrenGameObjectsIter iter=pTestBox->getFirstChild();iter!=pTestBox->getLastChild();iter++)
+	//{
+	//	pos = iter->second->getTransform().getPosition();
+	//	rot = iter->second->getTransform().getRotation();
+	//	scale = iter->second->getTransform().getScale();
+	//	
+	//	pMaterial=new Material();
+	//	pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+	//
+	//	iter->second->addComponent(pMaterial);
+
+	//	VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
+
+	//	pVisual->createVertexLayout(m_pRenderer);
+
+	//}
+	//
+	//pTestBox->getTransform().setPosition(pos.x,pos.y,pos.z);
+	//pTestBox->getTransform().setRotation(rot.x,rot.y,rot.z);
+	//pTestBox->getTransform().setScale(scale.x,scale.y,scale.z);
+	//m_GameObjectList.push_back(pTestBox);
+	//============================
 
 	return true;
 }
+
+
+//void MyGame::positionObject(GameObject *pObjIn){
+//	
+//	XMFLOAT3 pos;
+//	XMFLOAT3 rot;
+//	XMFLOAT3 scale;
+//
+//	for(GameObject::ChildrenGameObjectsIter iter=pObjIn->getFirstChild();iter!=pObjIn->getLastChild();iter++)
+//	{
+//		pos = iter->second->getTransform().getPosition();
+//		rot = iter->second->getTransform().getRotation();
+//		scale = iter->second->getTransform().getScale();
+//		
+//		//pMaterial=new Material();
+//		//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+//	
+//		//iter->second->addComponent(pMaterial);
+//
+//		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
+//
+//		pVisual->createVertexLayout(m_pRenderer);
+//
+//	}
+//	
+//	pObjIn->getTransform().setPosition(pos.x,pos.y,pos.z);
+//	pObjIn->getTransform().setRotation(rot.x,rot.y,rot.z);
+//	pObjIn->getTransform().setScale(scale.x,scale.y,scale.z);
+//}

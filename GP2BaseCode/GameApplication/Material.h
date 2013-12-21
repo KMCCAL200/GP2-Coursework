@@ -94,6 +94,7 @@ public:
 
 	bool loadDiffuseTexture(const string& filename, IRenderer * pRenderer);
 	bool loadSpecularTexture( const string& filename, IRenderer * pRenderer);
+	bool Material::loadCubeTexture(IRenderer * pRenderer);
 
 	ID3D10ShaderResourceView * getDiffuseTexture()
 	{
@@ -104,6 +105,10 @@ public:
 	{
 		return m_pSpecularTexture;
 	}
+	ID3D10ShaderResourceView * getCubeTexture()
+	{
+		return m_pCubeTexture;
+	}
 private:
 	XMCOLOR m_Ambient;
 	XMCOLOR m_Diffuse;
@@ -112,4 +117,5 @@ private:
 	ID3D10EffectTechnique *m_pCurrentTechnique;
 	ID3D10ShaderResourceView * m_pDiffuseTexture;
 	ID3D10ShaderResourceView * m_pSpecularTexture;
+	ID3D10ShaderResourceView * m_pCubeTexture;
 };

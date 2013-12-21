@@ -2,6 +2,9 @@
 #include "../GameApplication/GameObject.h"
 #include "../GameApplication/Components.h"
 
+
+
+
 // Define the input layout of the vertex, this is so we can bind a vertex to the pipeline - BMD
 const D3D10_INPUT_ELEMENT_DESC VerexLayout[] =
 {		
@@ -233,18 +236,6 @@ void D3D10Renderer::render()
                 }
 
                 render(pObject);
-
-				//if pObject is testCube then
-				//Change position
-				//Render again
-				/*if(pObject->getName()=="TestObject")
-				{
-					
-					pObject->getTransform().setPosition(2.0f,1.0f,0.0f);
-					//pObject->getTransform().setPosition(2.0f,1.0f,0.0f);
-					render(pObject);
-					//m_RenderQueue.pop();
-				}*/
                 m_RenderQueue.pop();
 				
 				}
@@ -345,12 +336,34 @@ void D3D10Renderer::render(GameObject *pObject)
 					ID3D10EffectShaderResourceVariable * pSpecularTextureVar=pCurrentEffect->GetVariableByName("specularTexture")->AsShaderResource();
 					pSpecularTextureVar->SetResource(pMaterial->getSpecularTexture());
 				}
+				// Skybox effect - MD
+				if(pMaterial->getCubeTexture()){
+				
+					//Get Effect variables
+					ID3D10EffectShaderResourceVariable * pCubeTextureVar=pCurrentEffect->GetVariableByName("g_EnvironmentTexture")->AsShaderResource();
+					ID3D10EffectMatrixVariable * m_pmInvWorldViewProjection = pCurrentEffect->GetVariableByName( "matInvWorldViewProjection" )->AsMatrix();
+				
+					//Send cude texture to effect
+					pCubeTextureVar->SetResource(pMaterial->getCubeTexture());
+				
+					//View projection matrix - Multiply view and projection matrix 
+					XMMATRIX  mViewPro = XMMatrixMultiply(m_View,m_Projection);    
+					//World view projection matrix - Multiply world, view and projection matrices 
+					XMMATRIX mWorldViewPro = XMMatrixMultiply(mViewPro,transform.getWorld());
+					//Calculate inverse of world view projection matrix
+					XMMATRIX  mInWorldViewProj;
+					XMVECTOR * pDeterminate = &XMVectorZero();
+					mInWorldViewProj = XMMatrixInverse(pDeterminate, mWorldViewPro);
+				
+					//Send value to effect
+					m_pmInvWorldViewProjection->SetMatrix((float*)&mInWorldViewProj);
 
+				}
 			
 
-			ID3D10EffectMatrixVariable * pWorldMatrixVar=pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();
-			ID3D10EffectMatrixVariable * pViewMatrixVar=pCurrentEffect->GetVariableByName("matView")->AsMatrix();
-			ID3D10EffectMatrixVariable * pProjectionMatrixVar=pCurrentEffect->GetVariableByName("matProjection")->AsMatrix();
+			ID3D10EffectMatrixVariable * pWorldMatrixVar = pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();
+			ID3D10EffectMatrixVariable * pViewMatrixVar = pCurrentEffect->GetVariableByName("matView")->AsMatrix();
+			ID3D10EffectMatrixVariable * pProjectionMatrixVar = pCurrentEffect->GetVariableByName("matProjection")->AsMatrix();
 	
 
 			if (pWorldMatrixVar)
@@ -365,6 +378,9 @@ void D3D10Renderer::render(GameObject *pObject)
 			{
 				pProjectionMatrixVar->SetMatrix((float*)&m_Projection);
 			}
+
+		
+
 			if (pAmbientLightColourVar)
 			{
 				pAmbientLightColourVar->SetFloatVector((float*)&m_AmbientLightColour);
@@ -572,4 +588,35 @@ ID3D10ShaderResourceView * D3D10Renderer::loadTexture(const char *pFileName)
 	}
 
 	return pTexture;
+}
+//Load texture cube for use as skybox - MD
+ID3D10ShaderResourceView * D3D10Renderer::loadCubeMap(){
+	//Load texture as cube
+	LPCWSTR strPath;
+	ID3D10Resource* pResource = NULL;
+	//Cube texture
+    ID3D10Texture2D* pCubeTexture = NULL;
+	//Returned resource view
+    ID3D10ShaderResourceView* pCubeRV = NULL;
+
+    D3DX10_IMAGE_LOAD_INFO LoadInfo;
+    LoadInfo.MiscFlags = D3D10_RESOURCE_MISC_TEXTURECUBE;
+
+    D3DX10CreateTextureFromFile( m_pD3D10Device, L"SkyBox/SkyMap.dds", &LoadInfo, NULL, &pResource, NULL ) ;
+	
+	
+	D3D10_TEXTURE2D_DESC desc;
+	ZeroMemory( &desc, sizeof( D3D10_TEXTURE2D_DESC ) );
+    pResource->QueryInterface( __uuidof( ID3D10Texture2D ), ( LPVOID* )&pCubeTexture );
+	pCubeTexture->GetDesc(&desc);
+	
+	//Create the resource view
+	D3D10_SHADER_RESOURCE_VIEW_DESC SMViewDesc;
+	SMViewDesc.Format = desc.Format;
+	SMViewDesc.ViewDimension = D3D10_SRV_DIMENSION_TEXTURECUBE;
+	SMViewDesc.TextureCube.MipLevels = desc.MipLevels;
+	SMViewDesc.TextureCube.MostDetailedMip = 0;
+
+	m_pD3D10Device->CreateShaderResourceView(pCubeTexture, &SMViewDesc, &pCubeRV);
+	return  pCubeRV;
 }

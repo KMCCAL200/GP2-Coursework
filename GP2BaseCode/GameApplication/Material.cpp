@@ -44,3 +44,14 @@ bool Material::loadSpecularTexture(const string& filename, IRenderer * pRenderer
 	}
 	return true;
 }
+//Load cubemap - MD
+bool Material::loadCubeTexture(IRenderer * pRenderer)
+{
+	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
+	m_pCubeTexture = pD3D10Renderer->loadCubeMap();
+	if (!m_pCubeTexture)
+	{
+		return false;
+	}
+	return true;
+}

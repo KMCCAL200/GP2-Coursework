@@ -92,6 +92,7 @@
     <ClInclude Include="ModelLoader.h" />
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="VisualComponent.h" />
   </ItemGroup>
@@ -104,6 +105,7 @@
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="Transform.cpp" />
     <ClCompile Include="VisualComponent.cpp" />
   </ItemGroup>
