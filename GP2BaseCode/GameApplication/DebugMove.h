@@ -1,4 +1,3 @@
-//This file is Kerri McCallum's work
 #pragma once
 #include "CameraComponent.h"
 #include "Transform.h"
@@ -14,13 +13,11 @@ using namespace std;
 class DebugMove{
 
 public:
-	//Constructor
 	DebugMove()
 	{
 		dir = 0.5;
 		Player1 = new CXBOXController(1);
 	};
-	//Deconstrutor
 	~DebugMove(){};
 
 	CXBOXController* Player1;

@@ -11,5 +11,6 @@ public:
 
 	bool initGame();
 private:
+	//void positionObject(GameObject *pObjIn);
 //	ObjectManager objectManager;
 };

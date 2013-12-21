@@ -14,13 +14,11 @@ using namespace std;
 class FPSMove{
 
 public:
-	//Constructor
 	FPSMove()
 	{
-		dir = 0.5;
+		dir = 0.1;
 		Player1 = new CXBOXController(1);
 	};
-	//Deconstructor
 	~FPSMove(){};
 
 	CXBOXController* Player1;

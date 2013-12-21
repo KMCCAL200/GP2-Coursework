@@ -1,4 +1,3 @@
-//This file is Kerri McCallum's work
 #include "FPSMove.h"
 //Moves the camera within the constraints of the world
 //Holds old mouse position
@@ -25,13 +24,13 @@ XMFLOAT3 FPSMove::cameraPos(XMFLOAT3 fps)
 	if(fps.y>-30 & (Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT || GetAsyncKeyState(VK_RIGHT) || Player1->GetState().Gamepad.sThumbLX > 10000))
 	{
 		//move the camera right
-		fps.y=fps.y-dir;
+		fps.z=fps.z+dir;
 	}
 	//Move stick left or press left arrow on keyboard or d-pad
 	if(fps.y<71 & (Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT || GetAsyncKeyState(VK_LEFT) || Player1->GetState().Gamepad.sThumbLX < -10000))
 	{
 		//move the camera left
-		fps.y=fps.y+dir;
+		fps.z=fps.z-dir;
 	}
 	//return updated position
 	return fps;
@@ -57,13 +56,13 @@ XMFLOAT3 FPSMove::lookAt(XMFLOAT3 fpsv,XMFLOAT3 fps)
 	if(fps.y>-30 & (Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT || GetAsyncKeyState(VK_RIGHT) || Player1->GetState().Gamepad.sThumbLX > 10000))
 	{
 		//move the view point right
-		fpsv.y=fpsv.y-dir;
+		fpsv.z=fpsv.z+dir;
 	}
 	//Move stick left or press left arrow on keyboard or d-pad
 	if(fps.y<71 & (Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT || GetAsyncKeyState(VK_LEFT) || Player1->GetState().Gamepad.sThumbLX < -10000))
 	{
 		//move the view point left
-		fpsv.y=fpsv.y+dir;
+		fpsv.z=fpsv.z-dir;
 	}
 
 	//******************LOOK WITH USING ANALOG STICK************************
@@ -72,28 +71,28 @@ XMFLOAT3 FPSMove::lookAt(XMFLOAT3 fpsv,XMFLOAT3 fps)
 	if(fpsv.z<200 & (Player1->GetState().Gamepad.sThumbRY < -10000))
 	{	
 		//move look position up
-		fpsv.z=fpsv.z+dir;
+		fpsv.y=fpsv.y-dir;
 	}
 	//Move stick up
 	if(fpsv.z>-200 & (Player1->GetState().Gamepad.sThumbRY > 10000))
 	{
 		//move look position down
-		fpsv.z=fpsv.z-dir;
+		fpsv.y=fpsv.y+dir;
 	}
 	//Move stick right
 	if(fpsv.y>-260 & (Player1->GetState().Gamepad.sThumbRX > 10000))
 	{
 		//move look position right
-		fpsv.y=fpsv.y-dir;
+		fpsv.z=fpsv.z+dir;
 	}
 	//Move stick left
 	if(fpsv.y<260 & (Player1->GetState().Gamepad.sThumbRX < -10000))
 	{
 		//move look position left
-		fpsv.y=fpsv.y+dir;
+		fpsv.z=fpsv.z-dir;
 	}
 	//Press X on keyboard or left bumper on XBOX controller
-	if(GetAsyncKeyState(0x58) || Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER)
+	if(GetAsyncKeyState(0x58) || Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_A)
 	{
 		//Resets the view point if you get lost
 		fpsv.z=0;
@@ -112,25 +111,25 @@ XMFLOAT3 FPSMove::lookAt(XMFLOAT3 fpsv,XMFLOAT3 fps)
 		if(fpsv.z<200 & py<oldPy)
 		{	
 			//move look position up
-			fpsv.z=fpsv.z+dir;
+			fpsv.y=fpsv.y+dir;
 		}
 		//move mouse down
 		if(fpsv.z>-200 & py>oldPy)
 		{
 			//move look position down
-			fpsv.z=fpsv.z-dir;
+			fpsv.y=fpsv.y-dir;
 		}
 		//move mouse right
 		if(fpsv.y>-260 & px>oldPx)
 		{
 			//move look position right
-			fpsv.y=fpsv.y-dir;
+			fpsv.z=fpsv.z+dir;
 		}
 		//move mouse left
 		if(fpsv.y<260 & px<oldPx)
 		{
 			//move look position left
-			fpsv.y=fpsv.y+dir;
+			fpsv.z=fpsv.z-dir;
 		}
 
 		//set old mouse position to new mouse position

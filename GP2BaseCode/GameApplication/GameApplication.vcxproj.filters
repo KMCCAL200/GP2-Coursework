@@ -1,111 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="CubeVisualComponent.cpp" />
+    <ClCompile Include="GameApplication.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Material.cpp" />
+    <ClCompile Include="VisualComponent.cpp" />
+    <ClCompile Include="ModelLoader.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="ModelManager.cpp" />
+    <ClCompile Include="ObjectManager.cpp" />
+    <ClCompile Include="Skybox.cpp" />
     <ClCompile Include="CameraComponent.cpp">
-      <Filter>MY STuff</Filter>
-    </ClCompile>
-    <ClCompile Include="DebugMove.cpp">
-      <Filter>MY STuff</Filter>
-    </ClCompile>
-    <ClCompile Include="FPSMove.cpp">
-      <Filter>MY STuff</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CubeVisualComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameApplication.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelLoader.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ModelManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="VisualComponent.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Transform.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>k</Filter>
     </ClCompile>
     <ClCompile Include="CXBOXController.cpp">
-      <Filter>MY STuff</Filter>
+      <Filter>k</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugMove.cpp">
+      <Filter>k</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSMove.cpp">
+      <Filter>k</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Components.h" />
+    <ClInclude Include="CubeVisualComponent.h" />
+    <ClInclude Include="DirectionLightComponent.h" />
+    <ClInclude Include="EffectComponent.h" />
+    <ClInclude Include="GameApplication.h" />
+    <ClInclude Include="GameComponent.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="LightComponent.h" />
+    <ClInclude Include="Material.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="VisualComponent.h" />
+    <ClInclude Include="ModelLoader.h" />
+    <ClInclude Include="ModelManager.h" />
+    <ClInclude Include="ObjectManager.h" />
+    <ClInclude Include="Skybox.h" />
     <ClInclude Include="CameraComponent.h">
-      <Filter>MY STuff</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugMove.h">
-      <Filter>MY STuff</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSMove.h">
-      <Filter>MY STuff</Filter>
-    </ClInclude>
-    <ClInclude Include="Components.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CubeVisualComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DirectionLightComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EffectComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameApplication.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="LightComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelLoader.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ModelManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="VisualComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files</Filter>
+      <Filter>k</Filter>
     </ClInclude>
     <ClInclude Include="CXBOXController.h">
-      <Filter>MY STuff</Filter>
+      <Filter>k</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugMove.h">
+      <Filter>k</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSMove.h">
+      <Filter>k</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{d01d2604-e5a9-439d-996d-ba0cb16ffb48}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{6a86b458-74a1-47b7-b8c8-04ff7812d2ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MY STuff">
-      <UniqueIdentifier>{a9233e34-821b-4c22-af05-97c9e3e5d23c}</UniqueIdentifier>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="k">
+      <UniqueIdentifier>{61918ccc-e0a3-4389-b219-69a981d980aa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -7,5 +7,7 @@
 #include "CameraComponent.h"
 #include "LightComponent.h"
 #include "DirectionLightComponent.h"
+#include "Skybox.h"
+#include "CXBOXController.h"
 #include "FPSMove.h"
 #include "DebugMove.h"

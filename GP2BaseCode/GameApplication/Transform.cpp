@@ -15,6 +15,6 @@ void Transform::update()
         if (m_pOwnerGameObject->getParent())
         {
                 Transform parentTransform=m_pOwnerGameObject->getTransform();
-                m_matWorld=XMMatrixMultiply(m_matWorld,parentTransform.getWorld());
+				m_matWorld=XMMatrixMultiply(m_matWorld,parentTransform.getWorld());
         }
 };

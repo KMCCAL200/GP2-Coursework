@@ -54,6 +54,7 @@ void setAmbientLightColour(float r, float g, float b, float a)
 }
 	
 	ID3D10ShaderResourceView * loadTexture(const char *pFileName);
+	ID3D10ShaderResourceView * D3D10Renderer::loadCubeMap();
 
 	void addToRenderQueue(GameObject *pObject);
 private:
@@ -62,6 +63,9 @@ bool fullScreen);
 	bool createInitialRenderTarget(int windowWidth, int windowHeight);
 
 void render(GameObject *pCurrentObject);
+
+
+
 private:
 	typedef std::queue<GameObject*> RenderQueue;
 	//D3D10 stuff
@@ -76,11 +80,18 @@ private:
 	//this will be used if we have no Effect
 	ID3D10Effect * m_pDefaultEffect;
 	ID3D10EffectTechnique * m_pDefaultTechnique;
-		XMCOLOR m_AmbientLightColour;
+	XMCOLOR m_AmbientLightColour;
 	RenderQueue m_RenderQueue;
 	
 	XMMATRIX m_View;
 	XMMATRIX m_Projection;
-	 GameObject * m_pMainCamera;
-        GameObject * m_pMainLight;
+	GameObject * m_pMainCamera;
+    GameObject * m_pMainLight;
+
+	//Skybox
+		
+	ID3D10EffectShaderResourceVariable* fxSkyMapVar;
+	ID3D10ShaderResourceView* smrv;
+	ID3D10EffectTechnique* SkyMapTechnique;
+	
 };

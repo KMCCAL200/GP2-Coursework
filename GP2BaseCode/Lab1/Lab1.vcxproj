@@ -102,7 +102,6 @@
   <ItemGroup>
     <None Include="Effects\Texture.fx" />
     <None Include="Effects\Transform.fx" />
-    <None Include="Effects\Tutorial11.fx" />
     <None Include="game.cfg" />
   </ItemGroup>
   <ItemGroup>

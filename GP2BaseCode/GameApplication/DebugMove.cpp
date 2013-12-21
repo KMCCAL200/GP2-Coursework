@@ -1,6 +1,6 @@
-//This file is Kerri McCallum's work
 #include "DebugMove.h"
 //Moves the camera without the constraints of the world
+
 //Holds old mouse position
 float oldx=-100;
 float oldy=-100;
@@ -25,13 +25,13 @@ XMFLOAT3 DebugMove::cameraPos(XMFLOAT3 fps)
 	if(Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT || GetAsyncKeyState(VK_RIGHT) || Player1->GetState().Gamepad.sThumbLX > 10000)
 	{
 		//move the camera right
-		fps.y=fps.y-dir;
+		fps.z=fps.z+dir;
 	}
 	//Move stick left or press left arrow on keyboard or d-pad
 	if(Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT || GetAsyncKeyState(VK_LEFT) || Player1->GetState().Gamepad.sThumbLX < -10000)
 	{
 		//move the camera left
-		fps.y=fps.y+dir;
+		fps.z=fps.z-dir;
 	}
 	//press W on keyboard or right trigger
 	if(Player1->GetState().Gamepad.bRightTrigger || GetAsyncKeyState(0x57))
@@ -49,8 +49,8 @@ XMFLOAT3 DebugMove::cameraPos(XMFLOAT3 fps)
 	if(GetAsyncKeyState(0x58) || Player1->GetState().Gamepad.wButtons &  XINPUT_GAMEPAD_BACK)
 	{
 		//Resets the position if you get lost
-		fps.x=140;
-		fps.z=10;
+		fps.x=50;
+		fps.z=-30;
 		fps.y=0;
 	}
 	//return updated position

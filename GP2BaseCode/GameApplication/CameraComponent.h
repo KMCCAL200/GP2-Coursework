@@ -1,4 +1,3 @@
-//This file is Kerri McCallum's work
 #pragma once
 
 #include "GameComponent.h"
@@ -10,12 +9,11 @@
 class CameraComponent:public GameComponent
 {
 public:
-	//Constructor
 	CameraComponent()
 	{
 		m_Name="Camera";
 		m_LookAt=XMFLOAT3(0.0f,0.0f,0.0f);
-		m_Up=XMFLOAT3(0.0f,0.0f,1.0f);
+		m_Up=XMFLOAT3(0.0f,1.0f,0.0f);
 		m_View=XMMatrixIdentity();
 		m_Projection=XMMatrixIdentity();
 		m_FOV=XM_PI/4;
@@ -23,7 +21,6 @@ public:
 		m_Near=0.1f;
 		m_Far=1000.0f;
 	};
-	//Deconstructor
 	~CameraComponent(){}
 
 	void update();

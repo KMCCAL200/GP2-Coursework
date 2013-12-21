@@ -44,19 +44,22 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 	FbxScene* lScene = FbxScene::Create(lSdkManager,"myScene");
 	FbxAxisSystem SceneAxisSystem = lScene->GetGlobalSettings().GetAxisSystem();
 
+	
 
 	INT iUpAxisSign;
 	FbxAxisSystem::EUpVector UpVector = SceneAxisSystem.GetUpVector( iUpAxisSign );
 
 	// Import the contents of the file into the scene.
 	lImporter->Import(lScene);
-
+	FbxSystemUnit::Inch.ConvertScene(lScene);
+	//FbxAxisSystem::OpenGL.ConvertScene(lScene);
 	// The file has been imported; we can get rid of the importer.
 	lImporter->Destroy();
 	FbxNode* lRootNode = lScene->GetRootNode();
 	FbxMesh * pMesh=NULL;
 	if(lRootNode) {
 		pRootObject=new GameObject();
+	
 		pRootObject->setName(lRootNode->GetName());
 		for (int i=0;i<lRootNode->GetChildCount();i++){
 			FbxNode * modelNode=lRootNode->GetChild(i);
@@ -72,13 +75,20 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 						string meshName = modelNode->GetName();
 						GameObject *pChildGO=new GameObject();
 						pChildGO->setName(meshName);
-						FbxDouble3 translation=modelNode->LclTranslation.Get();
-						FbxDouble3 rotation=modelNode->LclRotation.Get();
-						FbxDouble3 scaling=modelNode->LclScaling.Get();
+						//FbxAxisSystem::c
+						/*
+						FbxDouble3 lctranslation=modelNode->LclTranslation.Get();
+						FbxDouble3 lcrotation=modelNode->LclRotation.Get();
+						FbxDouble3 lcscaling=modelNode->LclScaling.Get();*/
 						
+						FbxAMatrix& globalTransform = modelNode->EvaluateGlobalTransform();
 						
-						pChildGO->getTransform().setPosition(translation[0],translation[1],translation[2]);
-						pChildGO->getTransform().setRotation(rotation[0],rotation[1],rotation[2]);
+						FbxVector4 translation = globalTransform.GetT();
+						FbxVector4 rotation = globalTransform.GetR();
+						FbxVector4 scaling = globalTransform.GetS();
+
+					pChildGO->getTransform().setPosition(translation[0],translation[1],translation[2]);
+					pChildGO->getTransform().setRotation(rotation[0],rotation[1],rotation[2]);
 						pChildGO->getTransform().setScale(scaling[0],scaling[1],scaling[2]);
 						
 						if(modelManager.get(meshName)==NULL){
