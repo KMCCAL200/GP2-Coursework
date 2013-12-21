@@ -16,9 +16,6 @@
     <ClCompile Include="CubeVisualComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CXBOXController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameApplication.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -40,6 +37,9 @@
     <ClCompile Include="Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CXBOXController.cpp">
+      <Filter>MY STuff</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraComponent.h">
@@ -55,9 +55,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CubeVisualComponent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CXBOXController.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DirectionLightComponent.h">
@@ -95,6 +92,9 @@
     </ClInclude>
     <ClInclude Include="Transform.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CXBOXController.h">
+      <Filter>MY STuff</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

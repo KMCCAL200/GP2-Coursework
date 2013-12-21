@@ -221,41 +221,25 @@ void D3D10Renderer::clear(float r,float g,float b,float a)
 
 void D3D10Renderer::render()
 {
-        m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
-        //We should really find all lights first! but instead we are just going to set a 'main' light 
-        while(!m_RenderQueue.empty())
-        {
-                GameObject * pObject=m_RenderQueue.front();
-                for(GameObject::ChildrenGameObjectsIter iter=pObject->getFirstChild();iter!=pObject->getLastChild();iter++)
-                {
-                        GameObject *pCurrentObject=(*iter).second;
-                        render(pCurrentObject);
-                }
-
-                render(pObject);
-
-				//if pObject is testCube then
-				//Change position
-				//Render again
-				/*if(pObject->getName()=="TestObject")
-				{
-					
-					pObject->getTransform().setPosition(2.0f,1.0f,0.0f);
-					//pObject->getTransform().setPosition(2.0f,1.0f,0.0f);
-					render(pObject);
-					//m_RenderQueue.pop();
-				}*/
-                m_RenderQueue.pop();
-				
-				}
-
+	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
+	//We should really find all lights first! but instead we are just going to set a 'main' light 
+	while(!m_RenderQueue.empty())
+	{
+		GameObject * pObject=m_RenderQueue.front();
+		for(GameObject::ChildrenGameObjectsIter iter=pObject->getFirstChild();iter!=pObject->getLastChild();iter++)
+		{
+			GameObject *pCurrentObject=(*iter).second;
+			render(pCurrentObject);
+		}
+		render(pObject);
+		m_RenderQueue.pop();
+	}
 }
 
 void D3D10Renderer::render(GameObject *pObject)
 {	
 
 	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
-
 
 		int noIndices=0;
 		int noVerts=0;
@@ -264,8 +248,6 @@ void D3D10Renderer::render(GameObject *pObject)
 		ID3D10Effect *pCurrentEffect=m_pDefaultEffect;
 		ID3D10EffectTechnique *pCurrentTechnique=m_pDefaultTechnique;
 		ID3D10InputLayout *pCurrentLayout=m_pDefaultVertexLayout;
-
-		//GameObject * pObject=m_RenderQueue.front();
 		
 			//Grab Transform
 			Transform transform=pObject->getTransform();
@@ -385,6 +367,7 @@ void D3D10Renderer::render(GameObject *pObject)
 	
 }
 			}
+
 void D3D10Renderer::present()
 {
 	//Swaps the buffers in the chain, the back buffer to the front(screen)
@@ -547,18 +530,6 @@ ID3D10InputLayout * D3D10Renderer::createVertexLayout(ID3D10Effect * pEffect)
 
 void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 {
-	/*DirectionLightComponent *pLight=static_cast<DirectionLightComponent*>(pObject->getComponent("DirectionalLight"));
-	if (pLight)
-	{
-		m_pMainLight=pObject;
-	}
-	CameraComponent *pCamera=static_cast<CameraComponent*>(pObject->getComponent("Camera"));
-	if (pCamera)
-	{
-		m_pMainCamera=pObject;
-	}
-	*/
-	
 	m_RenderQueue.push(pObject);
 }
 

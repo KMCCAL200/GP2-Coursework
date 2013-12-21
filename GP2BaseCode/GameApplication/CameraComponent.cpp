@@ -7,18 +7,23 @@
 #define _XM_NO_INTRINSICS_
 #include <xnamath.h>
 
+//Is user using debug camera?
+	bool debug = false;
+
 void CameraComponent::update()
 {CXBOXController* Player1;Player1 = new CXBOXController(1);
 	//Current position of camera
 	XMFLOAT3 position = m_pOwnerGameObject->getTransform().getPosition();
 	//New positiomn of camera
 	XMFLOAT3 newfps;
-	//Is user using debug camera?
-	bool debug = false;
 
-	//If the user holds down the shift key or right bumper the debug camera is active
-	if(GetAsyncKeyState(VK_SHIFT) || Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER)
+	//If the user presses the d key or left bumper the debug camera is active
+	if(GetAsyncKeyState(0x44) || Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER)
 	{debug = true;}
+	//If the user presses the f key or right bumper the fps camera is active
+	if(GetAsyncKeyState(0x46) || Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER)
+	{debug = false;}
+
 
 	if(debug==true)
 	{//Debug Movement (without constraints)
