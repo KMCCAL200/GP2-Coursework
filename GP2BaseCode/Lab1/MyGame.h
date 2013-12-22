@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../GameApplication/GameApplication.h"
-#include "../GameApplication/ObjectManager.h"
+
 
 class MyGame:public CGameApplication
 {
@@ -11,6 +11,5 @@ public:
 
 	bool initGame();
 private:
-	//void positionObject(GameObject *pObjIn);
-//	ObjectManager objectManager;
+
 };

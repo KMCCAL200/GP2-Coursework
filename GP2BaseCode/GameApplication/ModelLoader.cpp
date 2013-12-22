@@ -51,12 +51,9 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 
 	// Import the contents of the file into the scene.
 	lImporter->Import(lScene);
-<<<<<<< HEAD
+
 	//FbxSystemUnit::Inch.ConvertScene(lScene);
-=======
-	FbxSystemUnit::Inch.ConvertScene(lScene);
->>>>>>> origin/Kerri-camera-in-skybox
-	//FbxAxisSystem::OpenGL.ConvertScene(lScene);
+
 	// The file has been imported; we can get rid of the importer.
 	lImporter->Destroy();
 	FbxNode* lRootNode = lScene->GetRootNode();
@@ -85,7 +82,7 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 						FbxDouble3 lcrotation=modelNode->LclRotation.Get();
 						FbxDouble3 lcscaling=modelNode->LclScaling.Get();*/
 						
-<<<<<<< HEAD
+
 					/*	FbxAMatrix& globalTransform = modelNode->EvaluateGlobalTransform();
 						
 						FbxVector4 translation = globalTransform.GetT();
@@ -95,17 +92,7 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 					/*pChildGO->getTransform().setPosition(translation[0],translation[1],translation[2]);
 					pChildGO->getTransform().setRotation(rotation[0],rotation[1],rotation[2]);
 						pChildGO->getTransform().setScale(scaling[0],scaling[1],scaling[2]);*/
-=======
-						FbxAMatrix& globalTransform = modelNode->EvaluateGlobalTransform();
-						
-						FbxVector4 translation = globalTransform.GetT();
-						FbxVector4 rotation = globalTransform.GetR();
-						FbxVector4 scaling = globalTransform.GetS();
 
-					pChildGO->getTransform().setPosition(translation[0],translation[1],translation[2]);
-					pChildGO->getTransform().setRotation(rotation[0],rotation[1],rotation[2]);
-						pChildGO->getTransform().setScale(scaling[0],scaling[1],scaling[2]);
->>>>>>> origin/Kerri-camera-in-skybox
 						
 						if(modelManager.get(meshName)==NULL){
 							pMesh=converter.TriangulateMesh(pMesh);
