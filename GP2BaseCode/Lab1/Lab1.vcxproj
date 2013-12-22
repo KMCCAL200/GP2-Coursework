@@ -114,6 +114,7 @@
     <None Include="Effects\Texture.fx" />
     <None Include="Effects\Transform.fx" />
     <None Include="game.cfg" />
+    <None Include="HeightTextures\2h_axeH.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyGame.h" />

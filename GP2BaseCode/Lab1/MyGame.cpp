@@ -25,7 +25,7 @@ bool MyGame::initGame()
 	//MAIN LIGHT
 		DirectionLightComponent *pLightComp = new DirectionLightComponent();
 		
-		pLightComp->setDirection(1000.0f,-3000.0f,0.0f);
+		pLightComp->setDirection(100.0f,300.0f,2000.0f);
 		//Create Main Light SM
 		GameObject *pLightGO = new GameObject();
 		pLightGO->setName("MainLight");
@@ -41,7 +41,7 @@ bool MyGame::initGame()
         pCameraGO->setName("MainCamera");
         pCameraGO->addComponent(pCameraComp);
         setMainCamera(pCameraComp);
-        pCameraGO->getTransform().setPosition(100.5f,200.0f,-200.0f);
+        pCameraGO->getTransform().setPosition(10.5f,200.0f,-150.0f);
 
         m_GameObjectList.push_back(pCameraGO);
 		Material *pMaterial=new Material();
@@ -55,10 +55,10 @@ bool MyGame::initGame()
                 pMaterial=new Material();
 				//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer); 
 				//pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
-			    pMaterial->loadEffect("Effects/BumpMapping.fx",m_pRenderer);
+			    pMaterial->loadEffect("Effects/ParallaxMapping.fx",m_pRenderer);
 				pMaterial->loadDiffuseTexture("Textures/2h_axe.BMP",m_pRenderer);
-				//pMaterial->loadBumpTexture("BumpTextures/2h_axeN.bmp",m_pRenderer);
-				//pMaterial->loadHeightTexture("HeightTextures/2h_axe.bmp",m_pRenderer);
+				pMaterial->loadBumpTexture("BumpTextures/2h_axeN.bmp",m_pRenderer);
+				pMaterial->loadHeightTexture("HeightTextures/2h_axeH.bmp",m_pRenderer);
 				
                 iter->second->addComponent(pMaterial);
                 VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));

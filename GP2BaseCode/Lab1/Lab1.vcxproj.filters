@@ -25,6 +25,9 @@
     <Filter Include="BumpTextures">
       <UniqueIdentifier>{154b094f-cd24-4370-9beb-99393bbb6936}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HeightTextures">
+      <UniqueIdentifier>{dc74a406-f7b1-4339-a954-8f786b03a112}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -74,6 +77,9 @@
     </None>
     <None Include="Effects\Specular.fx">
       <Filter>Effects</Filter>
+    </None>
+    <None Include="HeightTextures\2h_axeH.bmp">
+      <Filter>HeightTextures</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

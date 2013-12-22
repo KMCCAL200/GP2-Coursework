@@ -112,7 +112,7 @@ float4 PS(PS_INPUT input):SV_TARGET
 	float specular = pow(saturate(dot(normal, halfVec)),power);
 	float4 diffuseTextureColour= diffuseMap.Sample(WrapPointSampler,newTexCoord);
 	//return float4(1.0f,1.0f,1.0f,1.0f);
-	return (ambientMaterial*ambientLightColour)+((diffuseMaterial+diffuseTextureColour)*diffuseLightColour*diffuseHighlight)+(specularMaterial*specularLightColour*specular);
+	return (ambientMaterial*ambientLightColour)+((diffuseMaterial+diffuseTextureColour)*diffuseLightColour*diffuseHighlight);
 	//return diffuseTextureColour;
 	}
 
