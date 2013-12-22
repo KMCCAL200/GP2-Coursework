@@ -26,7 +26,7 @@ PS_INPUT VS(VS_INPUT input)
 	return output;
 }
 
-Texture2D diffuseTexture;
+Texture2D diffuseMap;
 SamplerState diffuseSampler
 {
     Filter = MIN_MAG_LINEAR_MIP_POINT;
@@ -36,7 +36,7 @@ SamplerState diffuseSampler
 
 float4 PS(PS_INPUT input):SV_TARGET
 {
-	return diffuseTexture.Sample(diffuseSampler,input.texCoord);
+	return diffuseMap.Sample(diffuseSampler,input.texCoord);
 }
 
 RasterizerState DisableCulling

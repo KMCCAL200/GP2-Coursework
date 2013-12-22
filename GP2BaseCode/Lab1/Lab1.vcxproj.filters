@@ -16,6 +16,12 @@
     <Filter Include="Effects">
       <UniqueIdentifier>{ce937571-0e50-4afb-8b7b-a92c1bf72cc4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{2606bd38-4e80-4ae7-a44f-690b67ca0463}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Textures">
+      <UniqueIdentifier>{94d02418-8e0a-4a4b-a0cf-673e476c5521}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -33,7 +39,94 @@
     <None Include="Effects\Transform.fx">
       <Filter>Effects</Filter>
     </None>
-    <None Include="Effects\Tutorial11.fx">
+    <None Include="Textures\1h_axe.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\2h_axe.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\armoredrecon_diff.png">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\bricks3_color.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\bricks3_height.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\bricks3_normal.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\bricks3_spec.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\bricks9_color.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\g_1.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\ground1_color.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\ground1_height.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\ground1_normal.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\ground1_spec.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\m_3.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\m_3D.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\m_3N.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\m_3S.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\shield.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\shield_N.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\shield_S.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\stones5_color.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\stones5_height.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\stones5_normal.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\stones5_spec.jpg">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\u_5.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\u_5D.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\u_5N.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Textures\u_5S.bmp">
+      <Filter>Textures</Filter>
+    </None>
+    <None Include="Effects\BumpMapping.fx">
+      <Filter>Effects</Filter>
+    </None>
+    <None Include="Effects\ParallaxMapping.fx">
       <Filter>Effects</Filter>
     </None>
   </ItemGroup>

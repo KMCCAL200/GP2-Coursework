@@ -100,10 +100,39 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Effects\BumpMapping.fx" />
+    <None Include="Effects\ParallaxMapping.fx" />
     <None Include="Effects\Texture.fx" />
     <None Include="Effects\Transform.fx" />
-    <None Include="Effects\Tutorial11.fx" />
     <None Include="game.cfg" />
+    <None Include="Textures\1h_axe.bmp" />
+    <None Include="Textures\2h_axe.bmp" />
+    <None Include="Textures\armoredrecon_diff.png" />
+    <None Include="Textures\bricks3_color.jpg" />
+    <None Include="Textures\bricks3_height.jpg" />
+    <None Include="Textures\bricks3_normal.jpg" />
+    <None Include="Textures\bricks3_spec.jpg" />
+    <None Include="Textures\bricks9_color.jpg" />
+    <None Include="Textures\ground1_color.jpg" />
+    <None Include="Textures\ground1_height.jpg" />
+    <None Include="Textures\ground1_normal.jpg" />
+    <None Include="Textures\ground1_spec.jpg" />
+    <None Include="Textures\g_1.bmp" />
+    <None Include="Textures\m_3.bmp" />
+    <None Include="Textures\m_3D.bmp" />
+    <None Include="Textures\m_3N.bmp" />
+    <None Include="Textures\m_3S.bmp" />
+    <None Include="Textures\shield.bmp" />
+    <None Include="Textures\shield_N.bmp" />
+    <None Include="Textures\shield_S.bmp" />
+    <None Include="Textures\stones5_color.jpg" />
+    <None Include="Textures\stones5_height.jpg" />
+    <None Include="Textures\stones5_normal.jpg" />
+    <None Include="Textures\stones5_spec.jpg" />
+    <None Include="Textures\u_5.bmp" />
+    <None Include="Textures\u_5D.bmp" />
+    <None Include="Textures\u_5N.bmp" />
+    <None Include="Textures\u_5S.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyGame.h" />

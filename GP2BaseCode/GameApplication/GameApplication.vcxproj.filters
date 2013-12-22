@@ -2,18 +2,21 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CameraComponent.cpp">
-      <Filter>MY STuff</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DebugMove.cpp">
-      <Filter>MY STuff</Filter>
-    </ClCompile>
-    <ClCompile Include="FPSMove.cpp">
-      <Filter>MY STuff</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjectManager.cpp">
+    <ClCompile Include="ModelManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CubeVisualComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CXBOXController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugMove.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSMove.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameApplication.cpp">
@@ -28,28 +31,16 @@
     <ClCompile Include="ModelLoader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ModelManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="VisualComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CXBOXController.cpp">
-      <Filter>MY STuff</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraComponent.h">
-      <Filter>MY STuff</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugMove.h">
-      <Filter>MY STuff</Filter>
-    </ClInclude>
-    <ClInclude Include="FPSMove.h">
-      <Filter>MY STuff</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Components.h">
       <Filter>Header Files</Filter>
@@ -57,10 +48,19 @@
     <ClInclude Include="CubeVisualComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="CXBOXController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugMove.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="DirectionLightComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="EffectComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSMove.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameApplication.h">
@@ -84,28 +84,22 @@
     <ClInclude Include="ModelManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectManager.h">
+    <ClInclude Include="Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="VisualComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transform.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CXBOXController.h">
-      <Filter>MY STuff</Filter>
-    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{d01d2604-e5a9-439d-996d-ba0cb16ffb48}</UniqueIdentifier>
+      <UniqueIdentifier>{da77c1f7-2df3-4780-91ad-d0f45cfb7ce0}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{6a86b458-74a1-47b7-b8c8-04ff7812d2ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="MY STuff">
-      <UniqueIdentifier>{a9233e34-821b-4c22-af05-97c9e3e5d23c}</UniqueIdentifier>
+      <UniqueIdentifier>{27ccbab7-46bd-4b85-b0e1-f5e0ebe3c148}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

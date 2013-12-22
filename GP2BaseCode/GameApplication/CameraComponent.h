@@ -1,4 +1,4 @@
-//This file is Kerri McCallum's work
+//This File is Kerri McCallums work
 #pragma once
 
 #include "GameComponent.h"
@@ -10,93 +10,97 @@
 class CameraComponent:public GameComponent
 {
 public:
-	//Constructor
-	CameraComponent()
-	{
-		m_Name="Camera";
-		m_LookAt=XMFLOAT3(0.0f,0.0f,0.0f);
-		m_Up=XMFLOAT3(0.0f,0.0f,1.0f);
-		m_View=XMMatrixIdentity();
-		m_Projection=XMMatrixIdentity();
-		m_FOV=XM_PI/4;
-		m_AspectRatio=800.0f/640.0f;
-		m_Near=0.1f;
-		m_Far=1000.0f;
-	};
-	//Deconstructor
-	~CameraComponent(){}
 
-	void update();
+        CameraComponent()
+        {
+                m_Name="Camera";
+                m_LookAt=XMFLOAT3(0.0f,0.0f,0.0f);
+                m_Up=XMFLOAT3(0.0f,1.0f,0.0f);
+                m_View=XMMatrixIdentity();
+                m_Projection=XMMatrixIdentity();
+                m_FOV=XM_PI/4;
+                m_AspectRatio=800.0f/640.0f;
+                m_Near=0.1f;
+                m_Far=1500.0f;
+        };
 
-	void setLook(float x,float y,float z)
-	{
-		m_LookAt=XMFLOAT3(x,y,z);
-	};
+        ~CameraComponent()
+        {
+        }
 
-	void setUp(float x,float y,float z)
-	{
-		m_Up=XMFLOAT3(x,y,z);
-	};
 
-	void setFOV(float fov)
-	{
-		m_FOV=fov;
-	};
+        void update();
 
-	void setAspectRatio(float aspectRatio)
-	{
-		m_AspectRatio=aspectRatio;
-	};
+        void setLook(float x,float y,float z)
+        {
+                m_LookAt=XMFLOAT3(x,y,z);
+        };
 
-	void setNearClip(float nearClip)
-	{
-		m_Near=nearClip;
-	};
+        void setUp(float x,float y,float z)
+        {
+                m_Up=XMFLOAT3(x,y,z);
+        };
 
-	void setFarClip(float farClip)
-	{
-		m_Far=farClip;
-	};
+        void setFOV(float fov)
+        {
+                m_FOV=fov;
+        };
 
-	XMFLOAT3& getLookAt()
-	{
-		return m_LookAt;
-	};
+        void setAspectRatio(float aspectRatio)
+        {
+                m_AspectRatio=aspectRatio;
+        };
 
-	XMFLOAT3& getUp()
-	{
-		return m_Up;
-	};
+        void setNearClip(float nearClip)
+        {
+                m_Near=nearClip;
+        };
 
-	float getFOV()
-	{
-		return m_FOV;
-	};
+        void setFarClip(float farClip)
+        {
+                m_Far=farClip;
+        };
 
-	float getAspectRatio()
-	{
-		return m_AspectRatio;
-	};
+        XMFLOAT3& getLookAt()
+        {
+                return m_LookAt;
+        };
 
-	float getNear()
-	{
-		return m_Near;
-	};
+        XMFLOAT3& getUp()
+        {
+                return m_Up;
+        };
 
-	float getFar()
-	{
-		return m_Far;
-	};
+        float getFOV()
+        {
+                return m_FOV;
+        };
 
-	XMMATRIX& getView()
-	{
-		return m_View;
-	};
+        float getAspectRatio()
+        {
+                return m_AspectRatio;
+        };
 
-	XMMATRIX& getProjection()
-	{
-		return m_Projection;
-	};
+        float getNear()
+        {
+                return m_Near;
+        };
+
+        float getFar()
+        {
+                return m_Far;
+        };
+
+        XMMATRIX& getView()
+        {
+                return m_View;
+        };
+
+        XMMATRIX& getProjection()
+        {
+                return m_Projection;
+        };
+
 private:
 	XMFLOAT3 m_LookAt;
 	XMFLOAT3 m_Up;

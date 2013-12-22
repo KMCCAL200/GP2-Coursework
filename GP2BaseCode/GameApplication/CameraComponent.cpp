@@ -1,17 +1,16 @@
-//This file is Kerri McCallum's work
+//This File is Kerri McCallums work
 #include "CameraComponent.h"
 #include "Transform.h"
 #include "GameObject.h"
 #include "FPSMove.h"
 #include "DebugMove.h"
-#define _XM_NO_INTRINSICS_
-#include <xnamath.h>
 
 //Is user using debug camera?
 	bool debug = false;
 
 void CameraComponent::update()
-{CXBOXController* Player1;Player1 = new CXBOXController(1);
+{
+	CXBOXController* Player1;Player1 = new CXBOXController(1);
 	//Current position of camera
 	XMFLOAT3 position = m_pOwnerGameObject->getTransform().getPosition();
 	//New positiomn of camera
