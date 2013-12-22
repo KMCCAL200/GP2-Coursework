@@ -1,5 +1,5 @@
 #include "MyGame.h"
-
+#include "..\D3D10Renderer\D3D10Renderer.h"
 bool MyGame::initGame()
 {
 
@@ -27,7 +27,16 @@ bool MyGame::initGame()
 	//pTestObj->getTransform().setScale(1.0f,1.0f,1.0f);
 
 	//m_GameObjectList.push_back(pTestObj);
-
+	//==================================================LIGHT
+	//MAIN LIGHT
+		DirectionLightComponent *pLightComp = new DirectionLightComponent();
+		
+		pLightComp->setDirection(-300.0f,-40.0f,0.0f);
+		//Create Main Light SM
+		GameObject *pLightGO = new GameObject();
+		pLightGO->setName("MainLight");
+		pLightGO->addComponent(pLightComp);
+		
 
 	//==================================================CAMERA
 	CameraComponent *pCameraComp=new CameraComponent();
@@ -81,8 +90,10 @@ bool MyGame::initGame()
 		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 
 		pMaterial=new Material();
-		pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+		pMaterial->loadEffect("Effects/BumpMapping.fx",m_pRenderer);
 		pMaterial->loadDiffuseTexture("Textures/stones5_color.jpg",m_pRenderer);
+		pMaterial->loadBumpTexture("Textures/stones5_normal.jpg",m_pRenderer);
+		//pMaterial->loadHeightTexture("Textures/stones5_height.jpg",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
@@ -271,6 +282,11 @@ bool MyGame::initGame()
 	}
 	m_GameObjectList.push_back(pWoodenBoard);
 
+
+	//Send Camera and Light to Renderer SM
+		D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(m_pRenderer);
+		pD3D10Renderer->setMainLight(pLightGO);
+		pD3D10Renderer->setMainCamera(pCameraGO);
 
 	return true;
 }

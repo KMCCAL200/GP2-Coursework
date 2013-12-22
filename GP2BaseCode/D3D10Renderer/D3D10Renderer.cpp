@@ -31,6 +31,22 @@ const D3D10_INPUT_ELEMENT_DESC VerexLayout[] =
 	20, //Offset, this will increase as we add more elements(such texture coords) to the layout - BMD
 	D3D10_INPUT_PER_VERTEX_DATA, //Input classification - BMD
 	0 }, //Instance Data slot - BMD
+
+	{ "TANGENT", //Name of the semantic, this helps to bind the vertex inside the Vertex Shader - BMD
+	0, //The index of the semantic, see above - BMD
+	DXGI_FORMAT_R32G32B32_FLOAT, //The format of the element, in this case 32 bits of each sub element - BMD
+	0, //Input slot - BMD
+	32, //Offset, this will increase as we add more elements(such texture coords) to the layout - BMD
+	D3D10_INPUT_PER_VERTEX_DATA, //Input classification - BMD
+	0 }, //Instance Data slot - BMD
+
+	{ "BINORMAL", //Name of the semantic, this helps to bind the vertex inside the Vertex Shader - BMD
+	0, //The index of the semantic, see above - BMD
+	DXGI_FORMAT_R32G32B32_FLOAT, //The format of the element, in this case 32 bits of each sub element - BMD
+	0, //Input slot - BMD
+	44, //Offset, this will increase as we add more elements(such texture coords) to the layout - BMD
+	D3D10_INPUT_PER_VERTEX_DATA, //Input classification - BMD
+	0 }, //Instance Data slot - BMD
 };
 
 const char basicEffect[]=\
@@ -63,7 +79,7 @@ D3D10Renderer::D3D10Renderer()
 	m_pDefaultEffect=NULL;        
 	m_View=XMMatrixIdentity();
 	m_Projection=XMMatrixIdentity();
-	 setAmbientLightColour(0.5f,0.5f,0.5f,1.0f);
+	 setAmbientLightColour(0.8f,0.8f,0.8f,1.0f);
         m_pMainLight=NULL;
 }
 
@@ -245,7 +261,7 @@ void D3D10Renderer::render()
 void D3D10Renderer::render(GameObject *pObject)
 {	
 
-	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
+	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
 
 		int noIndices=0;
@@ -257,7 +273,8 @@ void D3D10Renderer::render(GameObject *pObject)
 		ID3D10InputLayout *pCurrentLayout=m_pDefaultVertexLayout;
 
 		//GameObject * pObject=m_RenderQueue.front();
-		
+		if(pObject)
+		{
 			//Grab Transform
 			Transform transform=pObject->getTransform();
 
@@ -293,26 +310,6 @@ void D3D10Renderer::render(GameObject *pObject)
 
 			m_pD3D10Device->IASetInputLayout(pCurrentLayout);
 
-			//=========================DIRECTION LIGHT==============================================================
-			ID3D10EffectVectorVariable *pAmbientLightColourVar=pCurrentEffect->GetVariableByName("ambientLightColour")->AsVector();
-
-			DirectionLightComponent *pDirectionLightComponent = static_cast<DirectionLightComponent *>(pObject->getComponent("DirectionLight"));
-			if(pDirectionLightComponent)
-			{
-				ID3D10EffectVectorVariable * pDiffuseLight = 
-					pCurrentEffect->GetVariableByName("DiffuseLightColour")->AsVector();
-
-				ID3D10EffectVectorVariable * pSpecularLight = 
-					pCurrentEffect->GetVariableByName("SpecularLightColour")->AsVector();
-
-				ID3D10EffectVectorVariable * pLightDir = 
-					pCurrentEffect->GetVariableByName("LightDirection")->AsVector();
-
-				pDiffuseLight->SetFloatVector((float*)&pDirectionLightComponent->getDiffuse());			
-				pSpecularLight->SetFloatVector((float*)&pDirectionLightComponent->getSpecular());
-				pLightDir->SetFloatVector((float*)&pDirectionLightComponent->getDirection());
-			}
-			//======================================================================================================
 			//Do we have an Effect? If we don't then use default
 			Material *pMaterial=static_cast<Material*>(pObject->getComponent("Material"));
 			if (pMaterial)
@@ -327,14 +324,28 @@ void D3D10Renderer::render(GameObject *pObject)
 				}
 				//Retrieve & send material stuff
 				if (pMaterial->getDiffuseTexture())
-				{
-					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseTexture")->AsShaderResource();
+				{//Retrieve the diffuse texture from the current effect SM
+					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseMap")->AsShaderResource();
 					pDiffuseTextureVar->SetResource(pMaterial->getDiffuseTexture());
 				}
 				if (pMaterial->getSpecularTexture())
 				{
+					//Retrieve the specular texture from the current effect SM
 					ID3D10EffectShaderResourceVariable * pSpecularTextureVar=pCurrentEffect->GetVariableByName("specularTexture")->AsShaderResource();
 					pSpecularTextureVar->SetResource(pMaterial->getSpecularTexture());
+				}
+				if(pMaterial->getBumpTexture())
+				{
+					//Retrieve the bump texture from the current effect for bump mapping SM
+					ID3D10EffectShaderResourceVariable * pBumpTextureVar=pCurrentEffect->GetVariableByName("bumpMap")->AsShaderResource();
+					pBumpTextureVar->SetResource(pMaterial->getBumpTexture());
+				}
+
+				if(pMaterial->getHeightTexture())
+				{
+					//Retrieve the height texture from the current effect for parallax mapping SM
+					ID3D10EffectShaderResourceVariable * pHeightTextureVar=pCurrentEffect->GetVariableByName("heightMap")->AsShaderResource();
+					pHeightTextureVar->SetResource(pMaterial->getHeightTexture());
 				}
 				// Skybox effect - MD
 				if(pMaterial->getCubeTexture()){
@@ -359,7 +370,55 @@ void D3D10Renderer::render(GameObject *pObject)
 					m_pmInvWorldViewProjection->SetMatrix((float*)&mInWorldViewProj);
 
 				}
+
+				//Retrieve the materials from the current effect SM
+				ID3D10EffectVectorVariable *pAmbientMatVar=pCurrentEffect->GetVariableByName("ambientMaterial")->AsVector();
+				ID3D10EffectVectorVariable *pDiffuseMatVar=pCurrentEffect->GetVariableByName("diffuseMaterial")->AsVector();
+				ID3D10EffectVectorVariable *pSpecularMatVar=pCurrentEffect->GetVariableByName("specularMaterial")->AsVector();
+
+				if (pAmbientMatVar)
+				{
+					pAmbientMatVar->SetFloatVector((float*)&pMaterial->getAmbient());
+				}
+				if (pDiffuseMatVar)
+				{
+					pDiffuseMatVar->SetFloatVector((float*)&pMaterial->getDiffuse());
+				}
+				if (pSpecularMatVar)
+				{
+					pSpecularMatVar->SetFloatVector((float*)&pMaterial->getSpecular());
+				}
+			}
+
+			//=========================DIRECTION LIGHT==============================================================
+			ID3D10EffectVectorVariable *pAmbientLightColourVar=pCurrentEffect->GetVariableByName("ambientLightColour")->AsVector();
+			if(m_pMainLight)
+			{
+			DirectionLightComponent *pDirectionLightComponent = static_cast<DirectionLightComponent *>(pObject->getComponent("lightDirection"));
+			if(pDirectionLightComponent)
+				{
+				ID3D10EffectVectorVariable * pDiffuseLight = 
+					pCurrentEffect->GetVariableByName("diffuseLightColour")->AsVector();
+
+				ID3D10EffectVectorVariable * pSpecularLight = 
+					pCurrentEffect->GetVariableByName("specularLightColour")->AsVector();
+
+				ID3D10EffectVectorVariable * pLightDir = 
+					pCurrentEffect->GetVariableByName("lightDirection")->AsVector();
+
+				pDiffuseLight->SetFloatVector((float*)&pDirectionLightComponent->getDiffuse());			
+				pSpecularLight->SetFloatVector((float*)&pDirectionLightComponent->getSpecular());
+				pLightDir->SetFloatVector((float*)&pDirectionLightComponent->getDirection());
+				}
+			}
+			//======================================================================================================
 			
+			if(m_pMainCamera)
+			{
+				Transform t=m_pMainCamera->getTransform();
+				ID3D10EffectVectorVariable *pCameraVar = pCurrentEffect->GetVariableByName("cameraPosition")->AsVector();
+				pCameraVar->SetFloatVector((float *)&t.getPosition());
+			}
 
 			ID3D10EffectMatrixVariable * pWorldMatrixVar = pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();
 			ID3D10EffectMatrixVariable * pViewMatrixVar = pCurrentEffect->GetVariableByName("matView")->AsMatrix();
@@ -398,9 +457,9 @@ void D3D10Renderer::render(GameObject *pObject)
 				else if (pVertexBuffer)
 					m_pD3D10Device->Draw(noVerts,0);
 			}
-	
+	}
 }
-			}
+			
 void D3D10Renderer::present()
 {
 	//Swaps the buffers in the chain, the back buffer to the front(screen)
@@ -563,7 +622,7 @@ ID3D10InputLayout * D3D10Renderer::createVertexLayout(ID3D10Effect * pEffect)
 
 void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 {
-	/*DirectionLightComponent *pLight=static_cast<DirectionLightComponent*>(pObject->getComponent("DirectionalLight"));
+	DirectionLightComponent *pLight=static_cast<DirectionLightComponent*>(pObject->getComponent("lightDirection"));
 	if (pLight)
 	{
 		m_pMainLight=pObject;
@@ -573,7 +632,7 @@ void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 	{
 		m_pMainCamera=pObject;
 	}
-	*/
+	
 	
 	m_RenderQueue.push(pObject);
 }
