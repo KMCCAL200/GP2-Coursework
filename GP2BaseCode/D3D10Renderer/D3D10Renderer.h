@@ -53,11 +53,12 @@ void setAmbientLightColour(float r, float g, float b, float a)
 	m_AmbientLightColour =XMFLOAT4(r,g,b,a);
 }
 
+//set the main light in the Renderer SM
 void setMainLight(GameObject * pLight)
 	{
 		m_pMainLight = pLight;
 	}
-
+//set main camera in Renderer SM
 	void setMainCamera(GameObject * pCamera)
 	{
 		m_pMainCamera = pCamera;

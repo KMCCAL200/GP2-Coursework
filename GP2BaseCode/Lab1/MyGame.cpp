@@ -31,7 +31,7 @@ bool MyGame::initGame()
 	//MAIN LIGHT
 		DirectionLightComponent *pLightComp = new DirectionLightComponent();
 		
-		pLightComp->setDirection(-300.0f,-40.0f,0.0f);
+		pLightComp->setDirection(100.0f,300.0f,2000.0f);
 		//Create Main Light SM
 		GameObject *pLightGO = new GameObject();
 		pLightGO->setName("MainLight");
@@ -90,10 +90,10 @@ bool MyGame::initGame()
 		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 
 		pMaterial=new Material();
-		pMaterial->loadEffect("Effects/BumpMapping.fx",m_pRenderer);
+		pMaterial->loadEffect("Effects/ParallaxMapping.fx",m_pRenderer);
 		pMaterial->loadDiffuseTexture("Textures/stones5_color.jpg",m_pRenderer);
 		pMaterial->loadBumpTexture("Textures/stones5_normal.jpg",m_pRenderer);
-		//pMaterial->loadHeightTexture("Textures/stones5_height.jpg",m_pRenderer);
+		pMaterial->loadHeightTexture("Textures/stones5_height.jpg",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
@@ -170,15 +170,16 @@ bool MyGame::initGame()
 		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 		
 		pMaterial=new Material();
-		pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+		pMaterial->loadEffect("Effects/BumpMapping.fx",m_pRenderer);
 		pMaterial->loadDiffuseTexture("Textures/m_3.BMP",m_pRenderer);
-		//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+		pMaterial->loadBumpTexture("Textures/m_3N.bmp",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
 		pVisual->createVertexLayout(m_pRenderer);
 
 	}
+	pAnvil->addComponent(pLightComp);
 	m_GameObjectList.push_back(pAnvil);
 	//=======================================================================2 Handed Axe
 	GameObject *p2hAxe = m_ModelLoader.loadModelFromFile("Models/2hAxe.fbx",m_pRenderer);

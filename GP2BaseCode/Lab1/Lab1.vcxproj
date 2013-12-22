@@ -100,8 +100,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\..\..\..\Desktop\BumpMapping.fx" />
-    <None Include="..\..\..\..\..\Desktop\ParallaxMapping.fx" />
+    <None Include="Effects\BumpMapping.fx" />
+    <None Include="Effects\ParallaxMapping.fx" />
     <None Include="Effects\Texture.fx" />
     <None Include="Effects\Transform.fx" />
     <None Include="game.cfg" />

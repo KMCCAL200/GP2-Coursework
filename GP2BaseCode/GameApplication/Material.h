@@ -22,8 +22,8 @@ public:
 		m_pEffect=NULL;
 		m_pCurrentTechnique=NULL;
 		m_Ambient=XMFLOAT4(0.3f,0.3f,0.3f,1.0f);
-		m_Diffuse=XMFLOAT4(0.5f,0.5f,0.5f,1.0f);
-		m_Specular=XMFLOAT4(1.0f,1.0f,1.0f,1.0f);
+		m_Diffuse=XMFLOAT4(1.0f,1.0f,1.0f,1.0f);
+		m_Specular=XMFLOAT4(1.0,1.0,1.0,1.0f);
 		m_pDiffuseTexture = NULL;
 		m_pSpecularTexture = NULL;
 		m_pBumpTexture = NULL;

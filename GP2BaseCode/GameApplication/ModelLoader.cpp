@@ -168,6 +168,8 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 
 	return pRootObject;
 }
+
+//used for bump mapping SM
 void ModelLoader::computeTangents(Vertex *pVerts,int vertexCount) 
 { 
     int triCount=vertexCount/3; 

@@ -123,10 +123,10 @@
     <None Include="Textures\u_5S.bmp">
       <Filter>Textures</Filter>
     </None>
-    <None Include="..\..\..\..\..\Desktop\BumpMapping.fx">
+    <None Include="Effects\BumpMapping.fx">
       <Filter>Effects</Filter>
     </None>
-    <None Include="..\..\..\..\..\Desktop\ParallaxMapping.fx">
+    <None Include="Effects\ParallaxMapping.fx">
       <Filter>Effects</Filter>
     </None>
   </ItemGroup>

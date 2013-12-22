@@ -394,7 +394,7 @@ void D3D10Renderer::render(GameObject *pObject)
 			ID3D10EffectVectorVariable *pAmbientLightColourVar=pCurrentEffect->GetVariableByName("ambientLightColour")->AsVector();
 			if(m_pMainLight)
 			{
-			DirectionLightComponent *pDirectionLightComponent = static_cast<DirectionLightComponent *>(pObject->getComponent("lightDirection"));
+			DirectionLightComponent *pDirectionLightComponent = static_cast<DirectionLightComponent *>(m_pMainLight->getComponent("lightDirection"));
 			if(pDirectionLightComponent)
 				{
 				ID3D10EffectVectorVariable * pDiffuseLight = 
