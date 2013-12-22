@@ -23,6 +23,7 @@ void Material::switchTechnique(const string& name)
 	}
 }
 
+//Load the diffuse texture from a specified file and return boolean SM
 bool Material::loadDiffuseTexture(const string& filename, IRenderer * pRenderer)
 {
 	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
@@ -33,7 +34,7 @@ bool Material::loadDiffuseTexture(const string& filename, IRenderer * pRenderer)
 	}
 	return true;
 }
-
+//Load the specular texture from a specified file and return boolean SM
 bool Material::loadSpecularTexture(const string& filename, IRenderer * pRenderer)
 {
 	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
@@ -44,12 +45,34 @@ bool Material::loadSpecularTexture(const string& filename, IRenderer * pRenderer
 	}
 	return true;
 }
+<<<<<<< HEAD
 //Load cubemap - MD
 bool Material::loadCubeTexture(IRenderer * pRenderer)
 {
 	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
 	m_pCubeTexture = pD3D10Renderer->loadCubeMap();
 	if (!m_pCubeTexture)
+=======
+
+//Load the bump texture from a specified file and return boolean SM
+bool Material::loadBumpTexture(const string& filename, IRenderer * pRenderer)
+{
+	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
+	m_pBumpTexture = pD3D10Renderer->loadTexture(filename.c_str());
+	if (!m_pBumpTexture)
+	{
+		return false;
+	}
+	return true;
+}
+
+//Load the height texture from a specified file and return boolean SM
+bool Material::loadHeightTexture(const string& filename, IRenderer * pRenderer)
+{
+	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
+	m_pHeightTexture = pD3D10Renderer->loadTexture(filename.c_str());
+	if (!m_pHeightTexture)
+>>>>>>> origin/StephenBumpMap
 	{
 		return false;
 	}

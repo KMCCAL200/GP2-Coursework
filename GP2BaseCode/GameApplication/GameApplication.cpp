@@ -28,6 +28,7 @@ CGameApplication::CGameApplication(void)
 	//Config options
 	m_ConfigFileName=TEXT("game.cfg");
 	m_pMainCamera=NULL;
+	
 }
 
 //Desconstructor
@@ -135,6 +136,7 @@ void CGameApplication::render()
 		pD3D10Renderer->setProjection(m_pMainCamera->getProjection());
 		pD3D10Renderer->setView(m_pMainCamera->getView());
 	}
+	
 	for(GameObjectIter iter=m_GameObjectList.begin();iter!=m_GameObjectList.end();++iter)
 	{
 		m_pRenderer->addToRenderQueue((*iter));

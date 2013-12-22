@@ -56,3 +56,4 @@ bool CubeVisualComponent::create(IRenderer * pRenderer)
 
 	return true;
 }
+//

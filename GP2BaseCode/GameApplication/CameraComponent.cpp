@@ -22,6 +22,7 @@ void CameraComponent::update()
 	if(GetAsyncKeyState(0x46) || Player1->GetState().Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER)
 	{debug = false;}
 
+<<<<<<< HEAD
 
 	if(debug==true)
 	{//Debug Movement (without constraints)
@@ -44,3 +45,7 @@ void CameraComponent::update()
 	//Sets the cameras new position
 	m_pOwnerGameObject->getTransform().setPosition(newfps.x,newfps.y,newfps.z);
 }
+=======
+}
+//
+>>>>>>> origin/StephenBumpMap
