@@ -23,6 +23,7 @@ void Material::switchTechnique(const string& name)
 	}
 }
 
+//Load the diffuse texture from a specified file and return boolean SM
 bool Material::loadDiffuseTexture(const string& filename, IRenderer * pRenderer)
 {
 	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
@@ -33,7 +34,7 @@ bool Material::loadDiffuseTexture(const string& filename, IRenderer * pRenderer)
 	}
 	return true;
 }
-
+//Load the specular texture from a specified file and return boolean SM
 bool Material::loadSpecularTexture(const string& filename, IRenderer * pRenderer)
 {
 	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
@@ -45,6 +46,7 @@ bool Material::loadSpecularTexture(const string& filename, IRenderer * pRenderer
 	return true;
 }
 
+//Load the bump texture from a specified file and return boolean SM
 bool Material::loadBumpTexture(const string& filename, IRenderer * pRenderer)
 {
 	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);
@@ -56,6 +58,7 @@ bool Material::loadBumpTexture(const string& filename, IRenderer * pRenderer)
 	return true;
 }
 
+//Load the height texture from a specified file and return boolean SM
 bool Material::loadHeightTexture(const string& filename, IRenderer * pRenderer)
 {
 	D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(pRenderer);

@@ -24,8 +24,9 @@ bool MyGame::initGame()
 	m_GameObjectList.push_back(pTestObj);*/
 	//MAIN LIGHT
 		DirectionLightComponent *pLightComp = new DirectionLightComponent();
-		pLightComp->setDiffuse(0.8f,0.8f,0.8f,1.0f);
-		pLightComp->setDirection(0.0f,0.0f,-1.0f);
+		
+		pLightComp->setDirection(1000.0f,-3000.0f,0.0f);
+		//Create Main Light SM
 		GameObject *pLightGO = new GameObject();
 		pLightGO->setName("MainLight");
 		pLightGO->addComponent(pLightComp);
@@ -57,6 +58,7 @@ bool MyGame::initGame()
 			    pMaterial->loadEffect("Effects/BumpMapping.fx",m_pRenderer);
 				pMaterial->loadDiffuseTexture("Textures/2h_axe.BMP",m_pRenderer);
 				//pMaterial->loadBumpTexture("BumpTextures/2h_axeN.bmp",m_pRenderer);
+				//pMaterial->loadHeightTexture("HeightTextures/2h_axe.bmp",m_pRenderer);
 				
                 iter->second->addComponent(pMaterial);
                 VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
@@ -65,6 +67,8 @@ bool MyGame::initGame()
 		pAxe->addComponent(pLightComp);
         m_GameObjectList.push_back(pAxe);
 
+
+		//Send Camera and Light to Renderer SM
 		D3D10Renderer *pD3D10Renderer=static_cast<D3D10Renderer*>(m_pRenderer);
 		pD3D10Renderer->setMainLight(pLightGO);
 		pD3D10Renderer->setMainCamera(pCameraGO);

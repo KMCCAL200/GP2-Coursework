@@ -17,7 +17,7 @@ public:
 	LightComponent()
 	{
 	m_Name = "Light";
-	 m_DiffuseColour=XMFLOAT4(0.8f,0.8f,0.8f,1.0f);
+	 m_DiffuseColour=XMFLOAT4(1.0f,1.0f,1.0f,1.0f);
      m_SpecularColour=XMFLOAT4(1.0f,1.0f,1.0f,1.0f);
 	};
 

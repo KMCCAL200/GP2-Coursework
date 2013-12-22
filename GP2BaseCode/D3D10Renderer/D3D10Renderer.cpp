@@ -76,7 +76,7 @@ D3D10Renderer::D3D10Renderer()
 	m_pDefaultEffect=NULL;        
 	m_View=XMMatrixIdentity();
 	m_Projection=XMMatrixIdentity();
-	 setAmbientLightColour(0.5f,0.5f,0.5f,1.0f);
+	 setAmbientLightColour(0.8f,0.8f,0.8f,1.0f);
         m_pMainLight=NULL;
 }
 
@@ -237,7 +237,7 @@ void D3D10Renderer::clear(float r,float g,float b,float a)
 
 void D3D10Renderer::render()
 {
-        m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
+        m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
         //We should really find all lights first! but instead we are just going to set a 'main' light 
         while(!m_RenderQueue.empty())
         {
@@ -256,7 +256,7 @@ void D3D10Renderer::render()
 void D3D10Renderer::render(GameObject *pObject)
 {	
 
-	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP );
+	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
 
 
@@ -323,26 +323,32 @@ void D3D10Renderer::render(GameObject *pObject)
 				//Retrieve & send material stuff
 				if (pMaterial->getDiffuseTexture())
 				{
+					//Retrieve the diffuse texture from the current effect SM
 					ID3D10EffectShaderResourceVariable * pDiffuseTextureVar = pCurrentEffect->GetVariableByName("diffuseMap")->AsShaderResource();
 					pDiffuseTextureVar->SetResource(pMaterial->getDiffuseTexture());
 				}
 				if (pMaterial->getSpecularTexture())
 				{
+					//Retrieve the specular texture from the current effect SM
 					ID3D10EffectShaderResourceVariable * pSpecularTextureVar=pCurrentEffect->GetVariableByName("specularTexture")->AsShaderResource();
 					pSpecularTextureVar->SetResource(pMaterial->getSpecularTexture());
 				}
 
 				if(pMaterial->getBumpTexture())
 				{
+					//Retrieve the bump texture from the current effect for bump mapping SM
 					ID3D10EffectShaderResourceVariable * pBumpTextureVar=pCurrentEffect->GetVariableByName("bumpMap")->AsShaderResource();
 					pBumpTextureVar->SetResource(pMaterial->getBumpTexture());
 				}
 
 				if(pMaterial->getHeightTexture())
 				{
+					//Retrieve the height texture from the current effect for parallax mapping SM
 					ID3D10EffectShaderResourceVariable * pHeightTextureVar=pCurrentEffect->GetVariableByName("heightMap")->AsShaderResource();
 					pHeightTextureVar->SetResource(pMaterial->getHeightTexture());
 				}
+
+				//Retrieve the materials from the current effect SM
 				ID3D10EffectVectorVariable *pAmbientMatVar=pCurrentEffect->GetVariableByName("ambientMaterial")->AsVector();
 				ID3D10EffectVectorVariable *pDiffuseMatVar=pCurrentEffect->GetVariableByName("diffuseMaterial")->AsVector();
 				ID3D10EffectVectorVariable *pSpecularMatVar=pCurrentEffect->GetVariableByName("specularMaterial")->AsVector();
@@ -607,7 +613,7 @@ void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 ID3D10ShaderResourceView * D3D10Renderer::loadTexture(const char *pFileName)
 {
 	ID3D10ShaderResourceView * pTexture=NULL;
-
+	//load texture from file with specified name SM
 	if (FAILED(D3DX10CreateShaderResourceViewFromFileA(m_pD3D10Device,pFileName,NULL,NULL,&pTexture,NULL)))
 	{
 		return pTexture;
