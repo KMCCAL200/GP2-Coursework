@@ -18,6 +18,7 @@ public:
         ModelLoader(){};
         ~ModelLoader(){};
 
+		void computeTangents(Vertex *pVerts,int vertexCount); 
         GameObject * loadModelFromFile(const string& filename, IRenderer *pRenderer);
 private:
         GameObject * loadFbxModelFromFile(const string& filename, IRenderer *pRenderer);

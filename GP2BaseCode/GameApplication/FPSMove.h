@@ -16,7 +16,7 @@ class FPSMove{
 public:
 	FPSMove()
 	{
-		dir = 0.1;
+		dir = 0.2;
 		Player1 = new CXBOXController(1);
 	};
 	~FPSMove(){};

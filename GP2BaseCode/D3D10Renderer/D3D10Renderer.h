@@ -50,8 +50,19 @@ public:
 void setAmbientLightColour(float r, float g, float b, float a)
 {
 
-	m_AmbientLightColour =XMCOLOR(r,g,b,a);
+	m_AmbientLightColour =XMFLOAT4(r,g,b,a);
 }
+
+//set the main light in the Renderer SM
+void setMainLight(GameObject * pLight)
+	{
+		m_pMainLight = pLight;
+	}
+//set main camera in Renderer SM
+	void setMainCamera(GameObject * pCamera)
+	{
+		m_pMainCamera = pCamera;
+	}
 	
 	ID3D10ShaderResourceView * loadTexture(const char *pFileName);
 	ID3D10ShaderResourceView * D3D10Renderer::loadCubeMap();
@@ -80,7 +91,7 @@ private:
 	//this will be used if we have no Effect
 	ID3D10Effect * m_pDefaultEffect;
 	ID3D10EffectTechnique * m_pDefaultTechnique;
-	XMCOLOR m_AmbientLightColour;
+	XMFLOAT4 m_AmbientLightColour;
 	RenderQueue m_RenderQueue;
 	
 	XMMATRIX m_View;

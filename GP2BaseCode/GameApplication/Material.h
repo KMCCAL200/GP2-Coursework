@@ -21,11 +21,13 @@ public:
 		m_Name="Material";
 		m_pEffect=NULL;
 		m_pCurrentTechnique=NULL;
-		m_Ambient=XMCOLOR(0.3f,0.3f,0.3f,1.0f);
-		m_Diffuse=XMCOLOR(0.5f,0.5f,0.5f,1.0f);
-		m_Specular=XMCOLOR(1.0f,1.0f,1.0f,1.0f);
+		m_Ambient=XMFLOAT4(0.3f,0.3f,0.3f,1.0f);
+		m_Diffuse=XMFLOAT4(1.0f,1.0f,1.0f,1.0f);
+		m_Specular=XMFLOAT4(1.0,1.0,1.0,1.0f);
 		m_pDiffuseTexture = NULL;
 		m_pSpecularTexture = NULL;
+		m_pBumpTexture = NULL;
+		m_pHeightTexture = NULL;
 	};
 
 	~Material()
@@ -47,34 +49,46 @@ public:
 			m_pSpecularTexture->Release();
 			m_pSpecularTexture = NULL;
 		}
+
+		if(m_pBumpTexture)
+		{
+			m_pBumpTexture->Release();
+			m_pBumpTexture = NULL;
+		}
+
+		if(m_pHeightTexture)
+		{
+			m_pHeightTexture->Release();
+			m_pHeightTexture = NULL;
+		}
 	};
 
 	void setAmbient(float r,float g,float b,float a)
 	{
-		m_Ambient=XMCOLOR(r,g,b,a);
+		m_Ambient=XMFLOAT4(r,g,b,a);
 	};
 
-	XMCOLOR& getAmbient()
+	XMFLOAT4& getAmbient()
 	{
 		return m_Ambient;
 	};
 
 	void setDiffuse(float r,float g,float b,float a)
 	{
-		m_Diffuse=XMCOLOR(r,g,b,a);
+		m_Diffuse=XMFLOAT4(r,g,b,a);
 	};
 
-	XMCOLOR& getDiffuse()
+	XMFLOAT4& getDiffuse()
 	{
 		return m_Diffuse;
 	};
 	
 	void setSpecular(float r,float g,float b,float a)
 	{
-		m_Specular=XMCOLOR(r,g,b,a);
+		m_Specular=XMFLOAT4(r,g,b,a);
 	};
 
-	XMCOLOR& getSpecular()
+	XMFLOAT4& getSpecular()
 	{
 		return m_Specular;
 	};
@@ -95,6 +109,8 @@ public:
 	bool loadDiffuseTexture(const string& filename, IRenderer * pRenderer);
 	bool loadSpecularTexture( const string& filename, IRenderer * pRenderer);
 	bool Material::loadCubeTexture(IRenderer * pRenderer);
+	bool loadBumpTexture( const string& filename, IRenderer * pRenderer);
+	bool loadHeightTexture( const string& filename, IRenderer * pRenderer);
 
 	ID3D10ShaderResourceView * getDiffuseTexture()
 	{
@@ -109,13 +125,24 @@ public:
 	{
 		return m_pCubeTexture;
 	}
+	ID3D10ShaderResourceView * getBumpTexture()
+	{
+		return m_pBumpTexture;
+	}
+
+	ID3D10ShaderResourceView * getHeightTexture()
+	{
+		return m_pHeightTexture;
+	}
 private:
-	XMCOLOR m_Ambient;
-	XMCOLOR m_Diffuse;
-	XMCOLOR m_Specular;
+	XMFLOAT4 m_Ambient;
+	XMFLOAT4 m_Diffuse;
+	XMFLOAT4 m_Specular;
 	ID3D10Effect *m_pEffect;
 	ID3D10EffectTechnique *m_pCurrentTechnique;
 	ID3D10ShaderResourceView * m_pDiffuseTexture;
 	ID3D10ShaderResourceView * m_pSpecularTexture;
 	ID3D10ShaderResourceView * m_pCubeTexture;
+	ID3D10ShaderResourceView * m_pBumpTexture;
+	ID3D10ShaderResourceView * m_pHeightTexture;
 };
