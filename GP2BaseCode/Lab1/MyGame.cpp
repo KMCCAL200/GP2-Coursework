@@ -96,7 +96,7 @@ bool MyGame::initGame()
 
 	for(GameObject::ChildrenGameObjectsIter iter=pBuilding1->getFirstChild();iter!=pBuilding1->getLastChild();iter++)
 	{
-		iter->second->getTransform().setPosition(0.0f,20.0f,-58.0f);
+		iter->second->getTransform().setPosition(-160.0f,-10.0f,30.0f);
 		iter->second->getTransform().setRotation(-1.57079633f/2,0.0f,0.0f);
 		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 		
@@ -116,9 +116,9 @@ bool MyGame::initGame()
 
 	for(GameObject::ChildrenGameObjectsIter iter=pBench->getFirstChild();iter!=pBench->getLastChild();iter++)
 	{
-		iter->second->getTransform().setPosition(-200.0f,0.0f,0.0f);
+		iter->second->getTransform().setPosition(-10.0f,10.0f,-30.0f);
 		iter->second->getTransform().setRotation(-1.57079633f/2,0.0f,0.0f);
-		iter->second->getTransform().setScale(0.5f,0.5f,0.5f);
+		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 		
 		pMaterial=new Material();
 		pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
@@ -127,37 +127,41 @@ bool MyGame::initGame()
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
 		pVisual->createVertexLayout(m_pRenderer);
 	}
-	//m_GameObjectList.push_back(pBench);
+	m_GameObjectList.push_back(pBench);
 	////=============================================================Armour Stand
 	GameObject *pArmourStand= m_ModelLoader.loadModelFromFile("Models/ArmourStand.fbx",m_pRenderer);
 	pBench->setName("Armour_Stnad");
 
 	for(GameObject::ChildrenGameObjectsIter iter=pArmourStand->getFirstChild();iter!=pArmourStand->getLastChild();iter++)
 	{
-		iter->second->getTransform().setPosition(80.0f,0.0f,0.0f);
+		iter->second->getTransform().setPosition(-10.0f,-4.0f,10.0f);
 		iter->second->getTransform().setRotation(-1.57079633f/2,0.0f,0.0f);
-		iter->second->getTransform().setScale(0.5f,0.5f,0.5f);
+		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 		
 		pMaterial=new Material();
-		pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+		pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+		pMaterial->loadDiffuseTexture("Textures/g_1.BMP",m_pRenderer);
+		//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
 		pVisual->createVertexLayout(m_pRenderer);
 	}
-//	m_GameObjectList.push_back(pArmourStand);
+	m_GameObjectList.push_back(pArmourStand);
 	////====================================================================Anvil
 	GameObject *pAnvil = m_ModelLoader.loadModelFromFile("Models/Anvil.fbx",m_pRenderer);
 	pAnvil->setName("Anvil");
 
 	for(GameObject::ChildrenGameObjectsIter iter=pAnvil->getFirstChild();iter!=pAnvil->getLastChild();iter++)
 	{
-		iter->second->getTransform().setPosition(60.0f,5.0f,-20.0f);
+		iter->second->getTransform().setPosition(-20.0f,-20.0f,40.0f);
 		iter->second->getTransform().setRotation(-1.57079633f/2,0.0f,0.0f);
 		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 		
 		pMaterial=new Material();
-		pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+		pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+		pMaterial->loadDiffuseTexture("Textures/m_3.BMP",m_pRenderer);
+		//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
@@ -235,7 +239,9 @@ bool MyGame::initGame()
 		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 		
 		pMaterial=new Material();
-		pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+		pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+		pMaterial->loadDiffuseTexture("Textures/bricks3_color.jpg",m_pRenderer);
+		//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
@@ -254,7 +260,9 @@ bool MyGame::initGame()
 		iter->second->getTransform().setScale(1.0f,1.0f,1.0f);
 		
 		pMaterial=new Material();
-		pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
+		pMaterial->loadEffect("Effects/Texture.fx",m_pRenderer);
+		pMaterial->loadDiffuseTexture("Textures/u_5.BMP",m_pRenderer);
+		//pMaterial->loadEffect("Effects/Specular.fx",m_pRenderer);
 		iter->second->addComponent(pMaterial);
 
 		VisualComponent *pVisual=static_cast<VisualComponent*>(iter->second->getComponent("Visual"));
