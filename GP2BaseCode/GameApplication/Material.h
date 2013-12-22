@@ -108,12 +108,12 @@ public:
 
 	bool loadDiffuseTexture(const string& filename, IRenderer * pRenderer);
 	bool loadSpecularTexture( const string& filename, IRenderer * pRenderer);
-<<<<<<< HEAD
+
 	bool Material::loadCubeTexture(IRenderer * pRenderer);
-=======
+
 	bool loadBumpTexture( const string& filename, IRenderer * pRenderer);
 	bool loadHeightTexture( const string& filename, IRenderer * pRenderer);
->>>>>>> origin/StephenBumpMap
+
 
 	ID3D10ShaderResourceView * getDiffuseTexture()
 	{
@@ -146,10 +146,10 @@ private:
 	ID3D10EffectTechnique *m_pCurrentTechnique;
 	ID3D10ShaderResourceView * m_pDiffuseTexture;
 	ID3D10ShaderResourceView * m_pSpecularTexture;
-<<<<<<< HEAD
+
 	ID3D10ShaderResourceView * m_pCubeTexture;
-=======
+
 	ID3D10ShaderResourceView * m_pBumpTexture;
 	ID3D10ShaderResourceView * m_pHeightTexture;
->>>>>>> origin/StephenBumpMap
+
 };

@@ -75,7 +75,7 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 					{
 						string meshName = modelNode->GetName();
 						GameObject *pChildGO=new GameObject();
-<<<<<<< HEAD
+
 						pChildGO->setName(meshName);
 						//FbxAxisSystem::c
 						/*
@@ -140,7 +140,7 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 										pVerts[fbxCornerIndex].textureCoords.x=fbxUV[0];
 										pVerts[fbxCornerIndex].textureCoords.y= 1.0f-fbxUV[1];
 									}
-=======
+
 						pChildGO->setName(pMesh->GetName());
 						//pMesh=converter.TriangulateMesh(pMesh);
 						FbxVector4 * verts=pMesh->GetControlPoints();
@@ -185,11 +185,11 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 									fbxUV = fbxLayerUV->GetDirectArray().GetAt(iUVIndex);        
 									pVerts[fbxCornerIndex].textureCoords.x=fbxUV[0];
 									pVerts[fbxCornerIndex].textureCoords.y= 1.0f-fbxUV[1];
->>>>>>> origin/StephenBumpMap
+
 								}
 							}
 
-<<<<<<< HEAD
+
 							VisualComponent *pVisualComponent=new VisualComponent();
 							//Vertex and index buffer for mesh created
 							pVisualComponent->createVertexBuffer(noVerts,pVerts,pRenderer);
@@ -202,23 +202,14 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 								delete [] pVerts;
 								pVerts=NULL;
 							}
-						}else{
+						else{
 							VisualComponent *pVisualComponent= modelManager.get(meshName);
 							pChildGO->addComponent(pVisualComponent);
 							pRootObject->addChild(pChildGO);
-=======
+
 						computeTangents(pVerts,noVerts);
 
-						VisualComponent *pVisualComponent=new VisualComponent();
-						pVisualComponent->createVertexBuffer(noVerts,pVerts,pRenderer);
-						pVisualComponent->createIndexBuffer(noIndices,pIndices,pRenderer);
-						pChildGO->addComponent(pVisualComponent);
-						pRootObject->addChild(pChildGO);
-						if (pVerts)
-						{
-							delete [] pVerts;
-							pVerts=NULL;
->>>>>>> origin/StephenBumpMap
+						}
 						}
 					}
 				}
@@ -226,10 +217,12 @@ GameObject * ModelLoader::loadFbxModelFromFile(const string& filename, IRenderer
 		}
 	}
 
-
+	
 	return pRootObject;
 }
-
+}
+}
+}
 void ModelLoader::computeTangents(Vertex *pVerts,int vertexCount) 
 { 
     int triCount=vertexCount/3; 

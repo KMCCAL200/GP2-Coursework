@@ -264,6 +264,7 @@ void D3D10Renderer::render(GameObject *pObject)
 	m_pD3D10Device->IASetPrimitiveTopology( D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST );
 
 
+
 		int noIndices=0;
 		int noVerts=0;
 		ID3D10Buffer *pIndexBuffer=NULL;
@@ -335,7 +336,7 @@ void D3D10Renderer::render(GameObject *pObject)
 					ID3D10EffectShaderResourceVariable * pSpecularTextureVar=pCurrentEffect->GetVariableByName("specularTexture")->AsShaderResource();
 					pSpecularTextureVar->SetResource(pMaterial->getSpecularTexture());
 				}
-<<<<<<< HEAD
+
 				// Skybox effect - MD
 				if(pMaterial->getCubeTexture()){
 				
@@ -357,7 +358,7 @@ void D3D10Renderer::render(GameObject *pObject)
 				
 					//Send value to effect
 					m_pmInvWorldViewProjection->SetMatrix((float*)&mInWorldViewProj);
-=======
+
 
 				if(pMaterial->getBumpTexture())
 				{
@@ -422,12 +423,7 @@ void D3D10Renderer::render(GameObject *pObject)
 				ID3D10EffectVectorVariable *pCameraVar = pCurrentEffect->GetVariableByName("cameraPosition")->AsVector();
 				pCameraVar->SetFloatVector((float *)&t.getPosition());
 			}
-			ID3D10EffectMatrixVariable * pWorldMatrixVar=pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();
-			ID3D10EffectMatrixVariable * pViewMatrixVar=pCurrentEffect->GetVariableByName("matView")->AsMatrix();
-			ID3D10EffectMatrixVariable * pProjectionMatrixVar=pCurrentEffect->GetVariableByName("matProjection")->AsMatrix();
->>>>>>> origin/StephenBumpMap
-
-				}
+			
 			
 
 			ID3D10EffectMatrixVariable * pWorldMatrixVar = pCurrentEffect->GetVariableByName("matWorld")->AsMatrix();
@@ -632,20 +628,7 @@ ID3D10InputLayout * D3D10Renderer::createVertexLayout(ID3D10Effect * pEffect)
 
 void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 {
-<<<<<<< HEAD
-	/*DirectionLightComponent *pLight=static_cast<DirectionLightComponent*>(pObject->getComponent("DirectionalLight"));
-	if (pLight)
-	{
-		m_pMainLight=pObject;
-	}
-	CameraComponent *pCamera=static_cast<CameraComponent*>(pObject->getComponent("Camera"));
-	if (pCamera)
-	{
-		m_pMainCamera=pObject;
-	}
-	*/
-	
-=======
+
 	DirectionLightComponent * pDirectionLightComponent=static_cast<DirectionLightComponent*>(pObject->getComponent("lightDirection"));
 	if(pDirectionLightComponent)
 	{
@@ -657,7 +640,7 @@ void D3D10Renderer::addToRenderQueue(GameObject *pObject)
 	{
 		m_pMainCamera = pObject;
 	}
->>>>>>> origin/StephenBumpMap
+
 	m_RenderQueue.push(pObject);
 }
 

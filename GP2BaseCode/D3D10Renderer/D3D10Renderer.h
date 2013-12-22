@@ -74,13 +74,11 @@ private:
 	bool fullScreen);
 	bool createInitialRenderTarget(int windowWidth, int windowHeight);
 
-<<<<<<< HEAD
+
 void render(GameObject *pCurrentObject);
 
 
-=======
-	void render(GameObject *pCurrentObject);
->>>>>>> origin/StephenBumpMap
+
 
 private:
 	typedef std::queue<GameObject*> RenderQueue;
@@ -96,16 +94,14 @@ private:
 	//this will be used if we have no Effect
 	ID3D10Effect * m_pDefaultEffect;
 	ID3D10EffectTechnique * m_pDefaultTechnique;
-<<<<<<< HEAD
-	XMCOLOR m_AmbientLightColour;
-=======
+
 	XMFLOAT4 m_AmbientLightColour;
->>>>>>> origin/StephenBumpMap
+
 	RenderQueue m_RenderQueue;
 	
 	XMMATRIX m_View;
 	XMMATRIX m_Projection;
-<<<<<<< HEAD
+
 	GameObject * m_pMainCamera;
     GameObject * m_pMainLight;
 
@@ -115,8 +111,6 @@ private:
 	ID3D10ShaderResourceView* smrv;
 	ID3D10EffectTechnique* SkyMapTechnique;
 	
-=======
-	 GameObject * m_pMainCamera;
-     GameObject * m_pMainLight;
->>>>>>> origin/StephenBumpMap
+
+
 };

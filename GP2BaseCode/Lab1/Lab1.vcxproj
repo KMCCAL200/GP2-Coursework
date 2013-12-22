@@ -100,6 +100,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\2hAxe.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Anvil.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\ArmourStand.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Bench.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Bridge.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Building1.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Building2.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Door.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Ground.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\shield.fbx" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Wall.FBX" />
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\WoodBoard.FBX" />
     <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\1h_axe.bmp" />
     <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\1h_axe.fbx" />
     <None Include="..\..\..\..\..\Dropbox\GP2 Coursework\Fantasy\blacksmith26587\blacksmith26587\content\2h_axe.bmp" />

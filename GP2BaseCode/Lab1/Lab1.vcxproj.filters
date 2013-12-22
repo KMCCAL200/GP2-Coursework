@@ -81,6 +81,42 @@
     <None Include="HeightTextures\2h_axeH.bmp">
       <Filter>HeightTextures</Filter>
     </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\2hAxe.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Anvil.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\ArmourStand.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Bench.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Bridge.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Building1.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Building2.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Door.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Ground.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\shield.fbx">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\Wall.FBX">
+      <Filter>Models</Filter>
+    </None>
+    <None Include="..\..\..\..\..\Desktop\GP2 Models\WoodBoard.FBX">
+      <Filter>Models</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyGame.h">
