@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+<<<<<<< HEAD
     <ClCompile Include="CameraComponent.cpp" />
+=======
+>>>>>>> origin/Kerri-camera-in-skybox
     <ClCompile Include="CubeVisualComponent.cpp" />
     <ClCompile Include="GameApplication.cpp" />
     <ClCompile Include="GameObject.cpp" />
@@ -12,9 +15,26 @@
     <ClCompile Include="ModelManager.cpp" />
     <ClCompile Include="ObjectManager.cpp" />
     <ClCompile Include="Skybox.cpp" />
+<<<<<<< HEAD
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CameraComponent.h" />
+=======
+    <ClCompile Include="CameraComponent.cpp">
+      <Filter>k</Filter>
+    </ClCompile>
+    <ClCompile Include="CXBOXController.cpp">
+      <Filter>k</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugMove.cpp">
+      <Filter>k</Filter>
+    </ClCompile>
+    <ClCompile Include="FPSMove.cpp">
+      <Filter>k</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+>>>>>>> origin/Kerri-camera-in-skybox
     <ClInclude Include="Components.h" />
     <ClInclude Include="CubeVisualComponent.h" />
     <ClInclude Include="DirectionLightComponent.h" />
@@ -30,8 +50,31 @@
     <ClInclude Include="ModelManager.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="Skybox.h" />
+<<<<<<< HEAD
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />
+=======
+    <ClInclude Include="CameraComponent.h">
+      <Filter>k</Filter>
+    </ClInclude>
+    <ClInclude Include="CXBOXController.h">
+      <Filter>k</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugMove.h">
+      <Filter>k</Filter>
+    </ClInclude>
+    <ClInclude Include="FPSMove.h">
+      <Filter>k</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="k">
+      <UniqueIdentifier>{61918ccc-e0a3-4389-b219-69a981d980aa}</UniqueIdentifier>
+    </Filter>
+>>>>>>> origin/Kerri-camera-in-skybox
   </ItemGroup>
 </Project>
